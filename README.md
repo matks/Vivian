@@ -20,3 +20,11 @@ composer install --dev
 Run the unit tests suite with atoum binary.
 ```bash
 vendor/bin/atoum -bf vendor/autoload.php -d tests/Units/
+```
+
+## Show
+
+Run the different scripts located in tests/Console:
+```bash
+php tests/Console/test-color
+```

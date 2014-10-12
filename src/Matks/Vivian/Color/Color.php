@@ -12,18 +12,22 @@ use Exception;
  */
 class Color
 {
-    const BLACK = 'black';
-    const RED = 'red';
-    const GREEN = 'green';
+    const BLACK  = 'black';
+    const RED    = 'red';
+    const GREEN  = 'green';
     const YELLOW = 'yellow';
-    const BLUE = 'blue';
-    const WHITE = 'white';
+    const BLUE   = 'blue';
+    const PURPLE = 'purple';
+    const CYAN   = 'cyan';
+    const WHITE  = 'white';
 
     const BASH_PROMPT_BLACK  = 30;
     const BASH_PROMPT_RED    = 31;
     const BASH_PROMPT_GREEN  = 32;
     const BASH_PROMPT_YELLOW = 33;
     const BASH_PROMPT_BLUE   = 34;
+    const BASH_PROMPT_PURPLE = 35;
+    const BASH_PROMPT_CYAN   = 36;
     const BASH_PROMPT_WHITE  = 37;
 
     /**
@@ -72,6 +76,8 @@ class Color
             static::GREEN  => static::BASH_PROMPT_GREEN,
             static::YELLOW => static::BASH_PROMPT_YELLOW,
             static::BLUE   => static::BASH_PROMPT_BLUE,
+            static::PURPLE => static::BASH_PROMPT_PURPLE,
+            static::CYAN   => static::BASH_PROMPT_CYAN,
             static::WHITE  => static::BASH_PROMPT_WHITE
         );
 
