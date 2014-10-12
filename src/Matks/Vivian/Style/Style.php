@@ -2,6 +2,8 @@
 
 namespace Matks\Vivian\Style;
 
+use Matks\Vivian\Util;
+
 /**
  * Style functions
  */
@@ -17,8 +19,6 @@ class Style
      */
     public static function __callstatic($name, $params)
     {
-        $knownStyles = static::getKnownStyles();
-
         // target string is expected to be:
         $targetString = $params[0][0];
         $functionName = '__'.$name;
@@ -36,7 +36,7 @@ class Style
      */
     public static function __underline($string)
     {
-        return static::buildUnderline('-', $string);
+        return static::buildUnderline($string);
     }
 
     /**
@@ -49,7 +49,7 @@ class Style
      */
     public static function __doubleUnderline($string)
     {
-        return static::buildUnderline('=', $string);
+        return static::buildUnderline($string, '=');
     }
 
     /**
@@ -60,7 +60,7 @@ class Style
      */
     public static function __border($string)
     {
-        return static::buildBorder('-', '|', '+', $string);
+        return static::buildBorder($string);
     }
 
     /**
@@ -71,7 +71,7 @@ class Style
      */
     public static function __doubleBorder($string)
     {
-        return static::buildBorder('=', '#', '*', $string);
+        return static::buildBorder($string, '=', '#', '*');
     }
 
     /**
@@ -91,45 +91,27 @@ class Style
         return $styles;
     }
 
-    private static function buildUnderline($lineCharacter, $string)
+    private static function buildUnderline($string, $lineCharacter = '-')
     {
         $stringLength = strlen($string);
-        $underline = static::buildStringForm($lineCharacter, $stringLength);
+        $underline = Util::buildPatternLine($lineCharacter, $stringLength);
 
         $result = $string . PHP_EOL . $underline . PHP_EOL;
 
         return $result;
     }
 
-    private static function buildBorder($lineCharacter, $columnCharacter, $crossCharacter, $string)
+    private static function buildBorder($string, $lineCharacter = '-', $columnCharacter = '|', $crossCharacter = '+')
     {
         $stringLength = strlen($string);
 
-        $line = static::buildStringForm($lineCharacter, $stringLength + 2);
+        $line = Util::buildPatternLine($lineCharacter, $stringLength + 2);
 
         $firstLine = $crossCharacter . $line   . $crossCharacter;
         $mainLine  = $columnCharacter . ' ' . $string . ' ' . $columnCharacter;
         $lastLine  = $firstLine;
 
         $result = $firstLine . PHP_EOL . $mainLine . PHP_EOL . $lastLine . PHP_EOL;
-
-        return $result;
-    }
-
-    /**
-     * Build a string composed of $form repeated $length times
-     *
-     * @param string  $form
-     * @param integer $length
-     *
-     * @return string
-     */
-    private static function buildStringForm($form, $length)
-    {
-        $result = '';
-        for ($i = 0; $i < $length; $i++) {
-            $result .= $form;
-        }
 
         return $result;
     }
