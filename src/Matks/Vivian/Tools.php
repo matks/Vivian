@@ -3,6 +3,7 @@
 namespace Matks\Vivian;
 
 use Matks\Vivian\Color\Color;
+use Matks\Vivian\Style\Style;
 use Exception;
 
 class Tools
@@ -14,6 +15,10 @@ class Tools
     {
         if (array_key_exists($name, Color::getKnownColors())) {
             return Color::$name($params);
+        }
+
+        if (in_array($name, Style::getKnownStyles())) {
+            return Style::$name($params);
         }
 
         throw new Exception("Unknown function name $name");

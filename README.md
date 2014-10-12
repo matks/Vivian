@@ -27,4 +27,5 @@ vendor/bin/atoum -bf vendor/autoload.php -d tests/Units/
 Run the different scripts located in tests/Console:
 ```bash
 php tests/Console/test-color
+php tests/Console/test-style
 ```

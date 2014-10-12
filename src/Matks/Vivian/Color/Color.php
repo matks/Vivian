@@ -31,7 +31,7 @@ class Color
     const BASH_PROMPT_WHITE  = 37;
 
     /**
-     * Static calls to allow calls such as green('hello');
+     * Static calls interface to allow calls such as green('hello');
      */
     public static function __callstatic($name, $params)
     {

@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+$autoloadFile = __DIR__.'/../../vendor/autoload.php';
+
+require $autoloadFile;
+
+echo Matks\Vivian\Tools::doubleBorder('Style functions');
+echo PHP_EOL;
+
+echo Matks\Vivian\Tools::border('Cool !');
+echo PHP_EOL;
+
+echo 'This is badass:' . PHP_EOL;
+echo Matks\Vivian\Tools::underline('Hell yeah !');
+echo PHP_EOL;
+
+echo 'This is more badass !' . PHP_EOL;
+echo Matks\Vivian\Tools::doubleUnderline('Hell yeah !');
+echo PHP_EOL;
