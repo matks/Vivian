@@ -1,0 +1,33 @@
+{
+    "name": "matks/vivian",
+    "description": "Php tools to provide a pretty console output",
+    "type": "library",
+    "keywords": [
+        "console"
+    ],
+    "homepage": "https://github.com/matks/Vivian",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Mathieu Ferment",
+            "email": "mathieu.ferment@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "atoum/atoum" : "dev-master"
+    },
+    "autoload": {
+        "psr-0" : {
+            "Matks\\Vivian" : "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
