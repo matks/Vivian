@@ -22,10 +22,11 @@ Run the unit tests suite with atoum binary.
 vendor/bin/atoum -bf vendor/autoload.php -d tests/Units/
 ```
 
-## Show
+## Use
 
-Run the different scripts located in tests/Console:
+The class Matks\Vivian\Tools is able to use all implemented styles through, see the examples in tests/Console:
 ```bash
 php tests/Console/test-color
 php tests/Console/test-style
+php tests/Console/test-structure
 ```
