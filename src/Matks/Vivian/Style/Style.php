@@ -23,7 +23,7 @@ class Style
         $targetString = $params[0][0];
         $functionName = '__'.$name;
 
-        return static::$functionName($params[0][0]);
+        return static::$functionName($targetString);
     }
 
     /**
