@@ -24,7 +24,7 @@ vendor/bin/atoum -bf vendor/autoload.php -d tests/Units/
 
 ## Use
 
-The class Matks\Vivian\Tools is able to use all implemented styles through, see the examples in tests/Console:
+The class Matks\Vivian\Tools is able to use all implemented styles, see the examples in tests/Console:
 ```bash
 php tests/Console/test-color
 php tests/Console/test-style
