@@ -1,13 +1,13 @@
 <?php
 
-namespace Matks\Vivian\Style;
+namespace Matks\Vivian\Border;
 
 use Matks\Vivian\Util;
 
 /**
- * Style functions
+ * Border functions
  */
-class Style
+class Border
 {
     const STYLE_UNDERLINE        = 'underline';
     const STYLE_DOUBLE_UNDERLINE = 'doubleUnderline';
@@ -79,7 +79,7 @@ class Style
      *
      * @return array
      */
-    public static function getKnownStyles()
+    public static function getKnownBorders()
     {
         $styles = array(
             static::STYLE_UNDERLINE,

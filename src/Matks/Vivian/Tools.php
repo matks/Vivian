@@ -3,7 +3,7 @@
 namespace Matks\Vivian;
 
 use Matks\Vivian\Color\Color;
-use Matks\Vivian\Style\Style;
+use Matks\Vivian\Border\Border;
 use Matks\Vivian\Structure\Structure;
 use Exception;
 
@@ -18,8 +18,8 @@ class Tools
             return Color::$name($params);
         }
 
-        if (in_array($name, Style::getKnownStyles())) {
-            return Style::$name($params);
+        if (in_array($name, Border::getKnownBorders())) {
+            return Border::$name($params);
         }
 
         if (in_array($name, Structure::getDisplayableStructures())) {
