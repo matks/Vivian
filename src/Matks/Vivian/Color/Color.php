@@ -8,6 +8,7 @@ use Exception;
  * Color functions
  *
  * Thanks Thijs Lensselink
+ *
  * @link http://blog.lenss.nl/2012/05/adding-colors-to-php-cli-script-output/
  */
 class Color
@@ -36,12 +37,12 @@ class Color
     public static function __callstatic($name, $params)
     {
         $knownColors = static::getKnownColors();
-        $colorID = $knownColors[$name];
+        $colorID     = $knownColors[$name];
 
         // target string is expected to be:
         $targetString = $params[0][0];
 
-        return static::color($params[0][0], $colorID);
+        return static::color($targetString, $colorID);
     }
 
     /**
@@ -49,6 +50,7 @@ class Color
      *
      * @param  string $string
      * @param  int    $colorID
+     *
      * @return string
      */
     public static function color($string, $colorID)
@@ -57,7 +59,7 @@ class Color
             throw new Exception("Error unknown color ID $colorID");
         }
 
-        $colorChar = "\033[".$colorID."m";
+        $colorChar     = "\033[" . $colorID . "m";
         $coloredString = $colorChar . $string . "\033[0m";
 
         return $coloredString;

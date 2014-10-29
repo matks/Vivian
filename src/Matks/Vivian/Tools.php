@@ -2,9 +2,10 @@
 
 namespace Matks\Vivian;
 
-use Matks\Vivian\Color\Color;
 use Matks\Vivian\Border\Border;
+use Matks\Vivian\Color\Color;
 use Matks\Vivian\Structure\Structure;
+use Matks\Vivian\Style\Style;
 use Exception;
 
 class Tools
@@ -26,6 +27,9 @@ class Tools
             return Structure::$name($params);
         }
 
+        if (array_key_exists($name, Style::getKnownStyles())) {
+            return Style::$name($params);
+        }
         throw new Exception("Unknown function name $name");
     }
 

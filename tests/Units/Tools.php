@@ -14,15 +14,13 @@ class Tools extends atoum
 
         $this
             ->string(Vivian\Tools::green($testString))
-                ->isEqualTo("\033[32mhello\033[0m")
-        ;
+            ->isEqualTo("\033[32mhello\033[0m");
 
         $testString2 = 'this is [a test]';
 
         $this
             ->string(Vivian\Tools::blue($testString2))
-                ->isEqualTo("\033[34mthis is [a test]\033[0m")
-        ;
+            ->isEqualTo("\033[34mthis is [a test]\033[0m");
     }
 
     public function testUnknownFunction()
@@ -32,38 +30,35 @@ class Tools extends atoum
                 function () {
                     Vivian\Tools::unknown('ah');
                 }
-            )->hasMessage('Unknown function name unknown')
-        ;
+            )->hasMessage('Unknown function name unknown');
     }
 
-    public function testStyles()
+    public function testBorders()
     {
-        $testString = 'hello';
+        $testString      = 'hello';
         $expectedString1 = 'hello' . PHP_EOL . '-----' . PHP_EOL;
         $expectedString2 = 'hello' . PHP_EOL . '=====' . PHP_EOL;
 
         $this
-            ->string(Vivian\Tools::underline($testString))
-                ->isEqualTo($expectedString1)
-            ->string(Vivian\Tools::doubleUnderline($testString))
-                ->isEqualTo($expectedString2)
-        ;
+            ->string(Vivian\Tools::underlineBorder($testString))
+            ->isEqualTo($expectedString1)
+            ->string(Vivian\Tools::doubleUnderlineBorder($testString))
+            ->isEqualTo($expectedString2);
 
-        $testString = 'Not a test';
+        $testString      = 'Not a test';
         $expectedString1 = '+------------+' . PHP_EOL . '| Not a test |' . PHP_EOL . '+------------+' . PHP_EOL;
         $expectedString2 = '*============*' . PHP_EOL . '# Not a test #' . PHP_EOL . '*============*' . PHP_EOL;
 
         $this
             ->string(Vivian\Tools::border($testString))
-                ->isEqualTo($expectedString1)
+            ->isEqualTo($expectedString1)
             ->string(Vivian\Tools::doubleBorder($testString))
-                ->isEqualTo($expectedString2)
-        ;
+            ->isEqualTo($expectedString2);
     }
 
     public function testStructures()
     {
-        $testList = array(
+        $testList  = array(
             'hello',
             5,
             'foo'
@@ -79,13 +74,12 @@ class Tools extends atoum
 
         $this
             ->string(Vivian\Tools::s_list1($testList))
-                ->isEqualTo($expectedList1)
+            ->isEqualTo($expectedList1)
             ->string(Vivian\Tools::s_list2($testList))
-                ->isEqualTo($expectedList2)
-        ;
+            ->isEqualTo($expectedList2);
 
         $expectedArray1 = '    a     => b' . PHP_EOL . '    never => over' . PHP_EOL . '    loop  => infinite' . PHP_EOL;
-        $expectedArray2  = '+-------+----------+' . PHP_EOL;
+        $expectedArray2 = '+-------+----------+' . PHP_EOL;
         $expectedArray2 .= '| a     | b        |' . PHP_EOL;
         $expectedArray2 .= '| never | over     |' . PHP_EOL;
         $expectedArray2 .= '| loop  | infinite |' . PHP_EOL;
@@ -93,23 +87,36 @@ class Tools extends atoum
 
         $this
             ->string(Vivian\Tools::s_phpArray($testArray))
-                ->isEqualTo($expectedArray1)
+            ->isEqualTo($expectedArray1)
             ->string(Vivian\Tools::s_array($testArray))
-                ->isEqualTo($expectedArray2)
-        ;
+            ->isEqualTo($expectedArray2);
+    }
+
+    public function testStyles()
+    {
+        $testString = 'hello';
+
+        $this
+            ->string(Vivian\Tools::bold($testString))
+            ->isEqualTo("\033[1mhello\033[0m");
+
+        $testString2 = 'this is [a test]';
+
+        $this
+            ->string(Vivian\Tools::blink($testString2))
+            ->isEqualTo("\033[5mthis is [a test]\033[0m");
     }
 
     public function testMix()
     {
-        $testString = 'Now this is wonderful:';
+        $testString     = 'Now this is wonderful:';
         $expectedString = "\033[36mNow this is wonderful:" . PHP_EOL . "======================" . PHP_EOL . "\033[0m";
 
-        $style = Vivian\Tools::doubleUnderline($testString);
+        $style        = Vivian\Tools::doubleUnderlineBorder($testString);
         $coloredStyle = Vivian\Tools::cyan($style);
 
         $this
             ->string($coloredStyle)
-                ->isEqualTo($expectedString)
-        ;
+            ->isEqualTo($expectedString);
     }
 }

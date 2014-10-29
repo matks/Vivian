@@ -29,4 +29,5 @@ The class Matks\Vivian\Tools is able to use all implemented styles, see the exam
 php tests/Console/test-color
 php tests/Console/test-border
 php tests/Console/test-structure
+php tests/Console/test-style
 ```

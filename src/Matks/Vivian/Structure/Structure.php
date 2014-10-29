@@ -27,8 +27,8 @@ class Structure
     public static function __callstatic($name, $params)
     {
         // target string is expected to be:
-        $target = $params[0][0];
-        $functionName = '__'.$name;
+        $target       = $params[0][0];
+        $functionName = '__' . $name;
 
         return static::$functionName($target);
     }
@@ -89,7 +89,7 @@ class Structure
         $result = '';
 
         // first line
-        $keyBorderLine = Util::buildPatternLine($lineCharacter, $maxKeyLength + 2);
+        $keyBorderLine   = Util::buildPatternLine($lineCharacter, $maxKeyLength + 2);
         $valueBorderLine = Util::buildPatternLine($lineCharacter, $maxValueLength + 2);
         $result .= $crossCharacter . $keyBorderLine . $crossCharacter;
         $result .= $valueBorderLine . $crossCharacter . PHP_EOL;
@@ -121,11 +121,11 @@ class Structure
 
         $result = '';
         foreach ($array as $key => $value) {
-            $keyLength = strlen($key);
+            $keyLength     = strlen($key);
             $missingLength = $maxKeyLength - $keyLength;
-            $fillingSpace = Util::buildPatternLine(' ', $missingLength);
+            $fillingSpace  = Util::buildPatternLine(' ', $missingLength);
 
-            $result .= ($tab ? static::TAB : '') . (($iteratorChracter) ? $iteratorChracter.' ' : '');
+            $result .= ($tab ? static::TAB : '') . (($iteratorChracter) ? $iteratorChracter . ' ' : '');
             $result .= $key . ' ' . $fillingSpace . $linkCharacter . ' ' . $value . PHP_EOL;
         }
 

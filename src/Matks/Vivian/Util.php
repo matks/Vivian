@@ -7,7 +7,8 @@ class Util
     /**
      * Find longest string length among keys
      *
-     * @param  array   $array
+     * @param  array $array
+     *
      * @return integer
      */
     public static function getMaxKeyLength(array $array)
@@ -27,7 +28,8 @@ class Util
     /**
      * Find longest string length among values
      *
-     * @param  array   $array
+     * @param  array $array
+     *
      * @return integer
      */
     public static function getMaxValueLength(array $array)

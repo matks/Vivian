@@ -1,3 +1,6 @@
 # Composer
 composer.phar
 vendor/*
+
+# PhpStorm
+.idea/*

@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+$autoloadFile = __DIR__.'/../../vendor/autoload.php';
+
+require $autoloadFile;
+
+echo Matks\Vivian\Tools::bold('Bold');
+echo PHP_EOL;
+echo Matks\Vivian\Tools::blink('Blinking !!!');
+echo PHP_EOL;
+echo Matks\Vivian\Tools::underline('Underlined');
+echo PHP_EOL;
+echo Matks\Vivian\Tools::invisible('Invisible');
+echo PHP_EOL;

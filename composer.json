@@ -18,11 +18,11 @@
         "php": ">=5.3.3"
     },
     "require-dev": {
-        "atoum/atoum" : "dev-master"
+        "atoum/atoum": "dev-master"
     },
     "autoload": {
-        "psr-0" : {
-            "Matks\\Vivian" : "src/"
+        "psr-0": {
+            "Matks\\Vivian": "src/"
         }
     },
     "extra": {

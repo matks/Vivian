@@ -9,8 +9,8 @@ use Matks\Vivian\Util;
  */
 class Border
 {
-    const STYLE_UNDERLINE        = 'underline';
-    const STYLE_DOUBLE_UNDERLINE = 'doubleUnderline';
+    const STYLE_UNDERLINE        = 'underlineBorder';
+    const STYLE_DOUBLE_UNDERLINE = 'doubleUnderlineBorder';
     const STYLE_BORDER           = 'border';
     const STYLE_DOUBLE_BORDER    = 'doubleBorder';
 
@@ -21,7 +21,7 @@ class Border
     {
         // target string is expected to be:
         $targetString = $params[0][0];
-        $functionName = '__'.$name;
+        $functionName = '__' . $name;
 
         return static::$functionName($targetString);
     }
@@ -32,9 +32,10 @@ class Border
      * Be careful, this adds two end-of-line
      *
      * @param  string $string
+     *
      * @return string
      */
-    public static function __underline($string)
+    public static function __underlineBorder($string)
     {
         return static::buildUnderline($string);
     }
@@ -45,9 +46,10 @@ class Border
      * Be careful, this adds two end-of-line
      *
      * @param  string $string
+     *
      * @return string
      */
-    public static function __doubleUnderline($string)
+    public static function __doubleUnderlineBorder($string)
     {
         return static::buildUnderline($string, '=');
     }
@@ -56,6 +58,7 @@ class Border
      * Draw a border around a string
      *
      * @param  string $string
+     *
      * @return string
      */
     public static function __border($string)
@@ -67,6 +70,7 @@ class Border
      * Draw a double border around a string
      *
      * @param  string $string
+     *
      * @return string
      */
     public static function __doubleBorder($string)
@@ -94,7 +98,7 @@ class Border
     private static function buildUnderline($string, $lineCharacter = '-')
     {
         $stringLength = strlen($string);
-        $underline = Util::buildPatternLine($lineCharacter, $stringLength);
+        $underline    = Util::buildPatternLine($lineCharacter, $stringLength);
 
         $result = $string . PHP_EOL . $underline . PHP_EOL;
 
@@ -107,7 +111,7 @@ class Border
 
         $line = Util::buildPatternLine($lineCharacter, $stringLength + 2);
 
-        $firstLine = $crossCharacter . $line   . $crossCharacter;
+        $firstLine = $crossCharacter . $line . $crossCharacter;
         $mainLine  = $columnCharacter . ' ' . $string . ' ' . $columnCharacter;
         $lastLine  = $firstLine;
 

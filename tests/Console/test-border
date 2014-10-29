@@ -7,6 +7,6 @@ require $autoloadFile;
 
 echo Matks\Vivian\Tools::doubleBorder('Big border');
 echo Matks\Vivian\Tools::border('Cool !');
-echo Matks\Vivian\Tools::underline('Great !');
-echo Matks\Vivian\Tools::doubleUnderline('Awesome !');
+echo Matks\Vivian\Tools::underlineBorder('Great !');
+echo Matks\Vivian\Tools::doubleUnderlineBorder('Awesome !');
 echo PHP_EOL;
