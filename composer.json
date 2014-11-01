@@ -15,7 +15,8 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.3.3",
+        "packaged/figlet": "dev-master"
     },
     "require-dev": {
         "atoum/atoum": "dev-master"

@@ -4,8 +4,48 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d0ad0727d416fedffc34c04e7e5e031a",
-    "packages": [],
+    "hash": "683b48c239b65dacb9ddfcef042267be",
+    "packages": [
+        {
+            "name": "packaged/figlet",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/packaged/figlet.git",
+                "reference": "5ea242cd37003a17aec5c1566f1982106ea1334a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/packaged/figlet/zipball/5ea242cd37003a17aec5c1566f1982106ea1334a",
+                "reference": "5ea242cd37003a17aec5c1566f1982106ea1334a",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Packaged\\Figlet\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Brooke Bryan",
+                    "email": "brooke@bajb.net",
+                    "homepage": "http://www.bajb.net"
+                }
+            ],
+            "description": "Figlet Text Render",
+            "homepage": "http://packaged.in/figlet",
+            "keywords": [
+                "figlet",
+                "font"
+            ],
+            "time": "2014-08-07 10:52:46"
+        }
+    ],
     "packages-dev": [
         {
             "name": "atoum/atoum",
@@ -85,6 +125,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "packaged/figlet": 20,
         "atoum/atoum": 20
     },
     "prefer-stable": false,
