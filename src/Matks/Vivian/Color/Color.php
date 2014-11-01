@@ -48,8 +48,8 @@ class Color
     /**
      * Format given string in chosen color
      *
-     * @param  string $string
-     * @param  int    $colorID
+     * @param string $string
+     * @param int    $colorID
      *
      * @return string
      */

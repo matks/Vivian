@@ -22,7 +22,7 @@ class Style
     const BASH_PROMPT_INVISIBLE = 8;
 
     /**
-     * Static calls interface to allow calls such as green('hello');
+     * Static calls interface
      */
     public static function __callstatic($name, $params)
     {

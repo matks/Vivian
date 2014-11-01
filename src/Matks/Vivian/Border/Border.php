@@ -31,7 +31,7 @@ class Border
      *
      * Be careful, this adds two end-of-line
      *
-     * @param  string $string
+     * @param string $string
      *
      * @return string
      */
@@ -45,7 +45,7 @@ class Border
      *
      * Be careful, this adds two end-of-line
      *
-     * @param  string $string
+     * @param string $string
      *
      * @return string
      */
@@ -57,7 +57,7 @@ class Border
     /**
      * Draw a border around a string
      *
-     * @param  string $string
+     * @param string $string
      *
      * @return string
      */
@@ -69,7 +69,7 @@ class Border
     /**
      * Draw a double border around a string
      *
-     * @param  string $string
+     * @param string $string
      *
      * @return string
      */

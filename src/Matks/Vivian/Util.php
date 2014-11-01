@@ -7,7 +7,7 @@ class Util
     /**
      * Find longest string length among keys
      *
-     * @param  array $array
+     * @param array $array
      *
      * @return integer
      */
@@ -28,7 +28,7 @@ class Util
     /**
      * Find longest string length among values
      *
-     * @param  array $array
+     * @param array $array
      *
      * @return integer
      */
