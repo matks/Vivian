@@ -30,4 +30,5 @@ php tests/Console/test-color
 php tests/Console/test-border
 php tests/Console/test-structure
 php tests/Console/test-style
+php tests/Console/test-figlet
 ```
