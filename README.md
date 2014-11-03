@@ -1,6 +1,11 @@
 Vivian
 ======
 
+[![Latest Stable Version](https://poser.pugx.org/matks/vivian/v/stable.svg)](https://packagist.org/packages/matks/vivian)
+[![Total Downloads](https://poser.pugx.org/matks/vivian/downloads.svg)](https://packagist.org/packages/matks/vivian)
+[![Latest Unstable Version](https://poser.pugx.org/matks/vivian/v/unstable.svg)](https://packagist.org/packages/matks/vivian)
+[![License](https://poser.pugx.org/matks/vivian/license.svg)](https://packagist.org/packages/matks/vivian)
+
 Tools to provide a pretty console output
 
 ## Installation
