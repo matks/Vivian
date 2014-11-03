@@ -1,0 +1,11 @@
+language: php
+php:
+	- 5.3
+	- 5.4
+	- 5.5
+install:
+	- composer install --dev
+before_script:
+	- composer install --dev
+script:
+- ./vendor/bin/atoum -bf vendor/autoload.php -d ./tests/Units/
