@@ -7,7 +7,7 @@ use Exception;
 /**
  * Background Color manager
  */
-class BackgroundColorManager
+class BackgroundColorManager extends AbstractColorManager
 {
     const BLACK  = 'black';
     const RED    = 'red';
@@ -52,7 +52,7 @@ class BackgroundColorManager
         // target string is expected to be:
         $targetString = $params[0][0];
 
-        return static::backgroundColor($targetString, $colorID);
+        return static::color($targetString, $colorID);
     }
 
     /**
@@ -72,26 +72,6 @@ class BackgroundColorManager
         }
 
         return $matches;
-    }
-
-    /**
-     * Format given string in chosen color
-     *
-     * @param string $string
-     * @param int    $colorID
-     *
-     * @return string
-     */
-    public static function backgroundColor($string, $colorID)
-    {
-        if (!in_array($colorID, static::getKnownColors())) {
-            throw new Exception("Error unknown color ID $colorID");
-        }
-
-        $colorChar     = "\033[" . $colorID . "m";
-        $coloredString = $colorChar . $string . "\033[0m";
-
-        return $coloredString;
     }
 
     /**

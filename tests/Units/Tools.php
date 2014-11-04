@@ -23,6 +23,21 @@ class Tools extends atoum
             ->isEqualTo("\033[34mthis is [a test]\033[0m");
     }
 
+    public function testBackgroundColors()
+    {
+        $testString = 'hello';
+
+        $this
+            ->string(Vivian\Tools::back_green($testString))
+            ->isEqualTo("\033[42mhello\033[0m");
+
+        $testString2 = 'this is [a test]';
+
+        $this
+            ->string(Vivian\Tools::back_blue($testString2))
+            ->isEqualTo("\033[44mthis is [a test]\033[0m");
+    }
+
     public function testUnknownFunction()
     {
         $this
