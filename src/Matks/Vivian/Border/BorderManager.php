@@ -5,9 +5,9 @@ namespace Matks\Vivian\Border;
 use Matks\Vivian\Util;
 
 /**
- * Border functions
+ * Border manager
  */
-class Border
+class BorderManager
 {
     const STYLE_UNDERLINE        = 'underlineBorder';
     const STYLE_DOUBLE_UNDERLINE = 'doubleUnderlineBorder';

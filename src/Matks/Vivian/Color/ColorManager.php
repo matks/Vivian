@@ -5,13 +5,13 @@ namespace Matks\Vivian\Color;
 use Exception;
 
 /**
- * Color functions
+ * Color manager
  *
  * Thanks Thijs Lensselink
  *
  * @link http://blog.lenss.nl/2012/05/adding-colors-to-php-cli-script-output/
  */
-class Color
+class ColorManager
 {
     const BLACK  = 'black';
     const RED    = 'red';

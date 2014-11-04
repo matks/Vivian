@@ -5,9 +5,9 @@ namespace Matks\Vivian\Structure;
 use Matks\Vivian\Util;
 
 /**
- * Array print functions
+ * Structures (array printing) manager
  */
-class Structure
+class StructureManager
 {
     /**
      * PHP does not allow use of function names

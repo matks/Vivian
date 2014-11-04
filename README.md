@@ -8,7 +8,7 @@ Vivian
 [![Latest Unstable Version](https://poser.pugx.org/matks/vivian/v/unstable.svg)](https://packagist.org/packages/matks/vivian)
 [![License](https://poser.pugx.org/matks/vivian/license.svg)](https://packagist.org/packages/matks/vivian)
 
-Tools to provide a pretty console output
+Tools to provide a pretty console output in ANSI/VT100 terminals
 
 ## Installation
 
@@ -31,7 +31,9 @@ vendor/bin/atoum -bf vendor/autoload.php -d tests/Units/
 
 ## Usage
 
-The class Matks\Vivian\Tools is able to use all implemented styles, for example:
+### Tool
+
+For simple styles, the class Matks\Vivian\Tools provide a useful call interface, for example:
 ```php
 use Matks\Vivian\Tools as Output;
 

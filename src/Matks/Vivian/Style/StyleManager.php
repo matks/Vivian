@@ -5,11 +5,11 @@ namespace Matks\Vivian\Style;
 use Exception;
 
 /**
- * Style functions
+ * Style manager
  *
  * @link http://ascii-table.com/ansi-escape-sequences-vt-100.php
  */
-class Style
+class StyleManager
 {
     const BOLD      = 'bold';
     const UNDERLINE = 'underline';
