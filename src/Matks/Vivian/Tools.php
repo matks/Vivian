@@ -3,7 +3,8 @@
 namespace Matks\Vivian;
 
 use Matks\Vivian\Border\BorderManager;
-use Matks\Vivian\Color\ColorManager;
+use Matks\Vivian\Color\ForegroundColorManager;
+use Matks\Vivian\Color\BackgroundColorManager;
 use Matks\Vivian\Figlet\FigletManager;
 use Matks\Vivian\Structure\StructureManager;
 use Matks\Vivian\Style\StyleManager;
@@ -16,8 +17,12 @@ class Tools
      */
     public static function __callstatic($name, $params)
     {
-        if (array_key_exists($name, ColorManager::getKnownColors())) {
-            return ColorManager::$name($params);
+        if (array_key_exists($name, ForegroundColorManager::getKnownColors())) {
+            return ForegroundColorManager::$name($params);
+        }
+
+        if (BackgroundColorManager::isBackgroundCall($name)) {
+            return BackgroundColorManager::$name($params);
         }
 
         if (in_array($name, BorderManager::getKnownBorders())) {

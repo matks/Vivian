@@ -52,8 +52,13 @@ if ($success) {
 See the examples in tests/Console:
 ```bash
 php tests/Console/test-color
+php tests/Console/test-background-color
 php tests/Console/test-border
 php tests/Console/test-structure
 php tests/Console/test-style
 php tests/Console/test-figlet
 ```
+
+## More about ANSI/VT100 terminal control
+
+http://www.termsys.demon.co.uk/vtansi.htm
