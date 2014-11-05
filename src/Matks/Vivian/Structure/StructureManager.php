@@ -96,11 +96,11 @@ class StructureManager
 
         // array lines
         foreach ($array as $key => $value) {
-            $keyLength        = strlen($key);
+            $keyLength        = Util::getVisibleStringLength($key);
             $missingKeyLength = $maxKeyLength - $keyLength;
             $fillingKeySpace  = Util::buildPatternLine(' ', $missingKeyLength);
 
-            $valueLength        = strlen($value);
+            $valueLength        = Util::getVisibleStringLength($value);
             $missingValueLength = $maxValueLength - $valueLength;
             $fillingValueSpace  = Util::buildPatternLine(' ', $missingValueLength);
 
@@ -121,7 +121,7 @@ class StructureManager
 
         $result = '';
         foreach ($array as $key => $value) {
-            $keyLength     = strlen($key);
+            $keyLength     = Util::getVisibleStringLength($key);
             $missingLength = $maxKeyLength - $keyLength;
             $fillingSpace  = Util::buildPatternLine(' ', $missingLength);
 

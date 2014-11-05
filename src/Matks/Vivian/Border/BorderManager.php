@@ -97,7 +97,7 @@ class BorderManager
 
     private static function buildUnderline($string, $lineCharacter = '-')
     {
-        $stringLength = strlen($string);
+        $stringLength = Util::getVisibleStringLength($string);
         $underline    = Util::buildPatternLine($lineCharacter, $stringLength);
 
         $result = $string . PHP_EOL . $underline . PHP_EOL;
@@ -107,7 +107,7 @@ class BorderManager
 
     private static function buildBorder($string, $lineCharacter = '-', $columnCharacter = '|', $crossCharacter = '+')
     {
-        $stringLength = strlen($string);
+        $stringLength = Util::getVisibleStringLength($string);
 
         $line = Util::buildPatternLine($lineCharacter, $stringLength + 2);
 
