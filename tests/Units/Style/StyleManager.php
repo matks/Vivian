@@ -2,7 +2,7 @@
 
 namespace Matks\Vivian\tests\Units\Style;
 
-use Matks\Vivian\Style;
+use Matks\Vivian\Style as BaseStyle;
 
 use \atoum;
 
@@ -13,7 +13,7 @@ class StyleManager extends atoum
         $testString = 'Bold';
 
         $this
-            ->string(Style\StyleManager::bold(array($testString)))
+            ->string(BaseStyle\StyleManager::bold(array($testString)))
             ->isEqualTo("\033[1mBold\033[0m");
     }
 
@@ -22,13 +22,13 @@ class StyleManager extends atoum
         $testString = 'foo';
 
         $this
-            ->string(Style\StyleManager::style($testString, 1))
+            ->string(BaseStyle\StyleManager::style($testString, 1))
             ->isEqualTo("\033[1mfoo\033[0m");
 
         $testString2 = 'a different string';
 
         $this
-            ->string(Style\StyleManager::style($testString2, 4))
+            ->string(BaseStyle\StyleManager::style($testString2, 4))
             ->isEqualTo("\033[4ma different string\033[0m");
     }
 
@@ -37,7 +37,7 @@ class StyleManager extends atoum
         $this
             ->exception(
                 function () {
-                    Style\StyleManager::style('foo', 10);
+                    BaseStyle\StyleManager::style('foo', 10);
                 }
             )->hasMessage('Unknown style ID 10');
     }
@@ -45,8 +45,8 @@ class StyleManager extends atoum
     public function testDoubleBackgroundStyle()
     {
         $testString = 'foo';
-        $style1     = Style\StyleManager::style($testString, 1);
-        $style2     = Style\StyleManager::style($style1, 5);
+        $style1     = BaseStyle\StyleManager::style($testString, 1);
+        $style2     = BaseStyle\StyleManager::style($style1, 5);
 
         $this
             ->string($style2)

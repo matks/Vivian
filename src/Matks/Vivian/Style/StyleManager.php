@@ -16,10 +16,10 @@ class StyleManager
     const BLINK     = 'blink';
     const INVISIBLE = 'invisible';
 
-    const BASH_PROMPT_BOLD      = 1;
-    const BASH_PROMPT_UNDERLINE = 4;
-    const BASH_PROMPT_BLINK     = 5;
-    const BASH_PROMPT_INVISIBLE = 8;
+    const BASH_BOLD      = 1;
+    const BASH_UNDERLINE = 4;
+    const BASH_BLINK     = 5;
+    const BASH_INVISIBLE = 8;
 
     /**
      * Static calls interface
@@ -63,10 +63,10 @@ class StyleManager
     public static function getKnownStyles()
     {
         $styles = array(
-            static::BOLD      => static::BASH_PROMPT_BOLD,
-            static::UNDERLINE => static::BASH_PROMPT_UNDERLINE,
-            static::BLINK     => static::BASH_PROMPT_BLINK,
-            static::INVISIBLE => static::BASH_PROMPT_INVISIBLE,
+            static::BOLD      => static::BASH_BOLD,
+            static::UNDERLINE => static::BASH_UNDERLINE,
+            static::BLINK     => static::BASH_BLINK,
+            static::INVISIBLE => static::BASH_INVISIBLE,
         );
 
         return $styles;
