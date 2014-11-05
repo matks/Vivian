@@ -3,6 +3,7 @@
 namespace Matks\Vivian\Structure;
 
 use Matks\Vivian\Util;
+use Exception;
 
 /**
  * Structures (array printing) manager
@@ -26,6 +27,10 @@ class StructureManager
      */
     public static function __callstatic($name, $params)
     {
+        if (!in_array($name, static::getDisplayableStructures())) {
+            throw new Exception("Unknown structure function name $name");
+        }
+
         // target string is expected to be:
         $target       = $params[0][0];
         $functionName = '__' . $name;
@@ -51,6 +56,11 @@ class StructureManager
     public static function __s_phpArray($array)
     {
         return static::buildPHPArray($array);
+    }
+
+    public static function __s_matrix($array)
+    {
+        throw new \RuntimeException('Not implemented yet');
     }
 
     /**

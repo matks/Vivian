@@ -9,6 +9,8 @@ class Util
     /**
      * Find longest string length among keys
      *
+     * Only visible characters are considered
+     *
      * @param array $array
      *
      * @return integer
@@ -29,6 +31,8 @@ class Util
 
     /**
      * Find longest string length among values
+     *
+     * Only visible characters are considered
      *
      * @param array $array
      *

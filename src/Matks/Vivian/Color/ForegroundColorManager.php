@@ -2,8 +2,6 @@
 
 namespace Matks\Vivian\Color;
 
-use Exception;
-
 /**
  * Foreground Color manager
  *

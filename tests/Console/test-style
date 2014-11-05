@@ -5,11 +5,18 @@ $autoloadFile = __DIR__.'/../../vendor/autoload.php';
 
 require $autoloadFile;
 
-echo Matks\Vivian\Tools::bold('Bold');
+$bold = Matks\Vivian\Tools::bold('Bold');
+
+echo $bold;
 echo PHP_EOL;
 echo Matks\Vivian\Tools::blink('Blinking !!!');
 echo PHP_EOL;
 echo Matks\Vivian\Tools::underline('Underlined');
 echo PHP_EOL;
 echo Matks\Vivian\Tools::invisible('Invisible');
+echo PHP_EOL;
+
+$doubleStyle = Matks\Vivian\Tools::blink($bold);
+$fullStyle = Matks\Vivian\Tools::underline($doubleStyle);
+echo $fullStyle;
 echo PHP_EOL;

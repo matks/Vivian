@@ -46,7 +46,7 @@ class StyleManager
     public static function style($string, $styleID)
     {
         if (!in_array($styleID, static::getKnownStyles())) {
-            throw new Exception("Error unknown style ID $styleID");
+            throw new Exception("Unknown style ID $styleID");
         }
 
         $styleChar    = "\033[" . $styleID . "m";

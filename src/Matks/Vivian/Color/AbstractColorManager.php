@@ -42,7 +42,7 @@ abstract class AbstractColorManager
      *
      * @return array
      */
-    public abstract static function getKnownColors();
+    abstract public static function getKnownColors();
 
     /**
      * Check if given string already contains color escape code
@@ -60,6 +60,6 @@ abstract class AbstractColorManager
 
         $result = preg_match($coloredStringPattern, $string);
 
-        return (boolean)$result;
+        return (boolean) $result;
     }
 }

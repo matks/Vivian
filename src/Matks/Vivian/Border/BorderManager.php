@@ -3,6 +3,7 @@
 namespace Matks\Vivian\Border;
 
 use Matks\Vivian\Util;
+use Exception;
 
 /**
  * Border manager
@@ -19,6 +20,10 @@ class BorderManager
      */
     public static function __callstatic($name, $params)
     {
+        if (!in_array($name, static::getKnownBorders())) {
+            throw new Exception("Unknown border function name $name");
+        }
+
         // target string is expected to be:
         $targetString = $params[0][0];
         $functionName = '__' . $name;
