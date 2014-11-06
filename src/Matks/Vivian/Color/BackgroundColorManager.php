@@ -2,6 +2,7 @@
 
 namespace Matks\Vivian\Color;
 
+use Matks\Vivian\Output\Element;
 use Exception;
 
 /**
@@ -49,10 +50,15 @@ class BackgroundColorManager extends AbstractColorManager
             throw new Exception("Unknown background color name $name");
         }
 
+        $color = static::color($colorID);
+
         // target string is expected to be:
         $targetString = $params[0][0];
 
-        return static::color($targetString, $colorID);
+        $element = new Element($targetString);
+        $element->setBackgroundColor($color);
+
+        return $element->render();
     }
 
     /**
@@ -93,5 +99,15 @@ class BackgroundColorManager extends AbstractColorManager
         );
 
         return $colors;
+    }
+
+    /**
+     * Get Color class
+     *
+     * @return string
+     */
+    public static function getColorClass()
+    {
+        return '\Matks\Vivian\Color\BackgroundColor';
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Matks\Vivian\Color;
 
+use Matks\Vivian\Output\Element;
+
 /**
  * Foreground Color manager
  *
@@ -9,7 +11,7 @@ namespace Matks\Vivian\Color;
  *
  * @link http://blog.lenss.nl/2012/05/adding-colors-to-php-cli-script-output/
  */
-class ForegroundColorManager extends AbstractColorManager
+class TextColorManager extends AbstractColorManager
 {
     const BLACK  = 'black';
     const RED    = 'red';
@@ -37,10 +39,15 @@ class ForegroundColorManager extends AbstractColorManager
         $knownColors = static::getKnownColors();
         $colorID     = $knownColors[$name];
 
+        $color = static::color($colorID);
+
         // target string is expected to be:
         $targetString = $params[0][0];
 
-        return static::color($targetString, $colorID);
+        $element = new Element($targetString);
+        $element->setTextColor($color);
+
+        return $element->render();
     }
 
     /**
@@ -62,5 +69,15 @@ class ForegroundColorManager extends AbstractColorManager
         );
 
         return $colors;
+    }
+
+    /**
+     * Get Color class
+     *
+     * @return string
+     */
+    public static function getColorClass()
+    {
+        return '\Matks\Vivian\Color\TextColor';
     }
 }

@@ -2,13 +2,13 @@
 
 namespace Matks\Vivian\Color;
 
-use Matks\Vivian\Color\BackgroundColorManager;
+use Matks\Vivian\Color\TextColorManager;
 use Matks\Vivian\Output\EscapeAttribute;
 
 /**
  * Color
  */
-class BackgroundColor extends EscapeAttribute
+class TextColor extends EscapeAttribute
 {
 
     /**
@@ -16,7 +16,7 @@ class BackgroundColor extends EscapeAttribute
      */
     protected function getAllowedEscapeCodes()
     {
-        $knownColors = BackgroundColorManager::getKnownColors();
+        $knownColors = TextColorManager::getKnownColors();
 
         return $knownColors;
     }

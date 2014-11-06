@@ -5,17 +5,10 @@ $autoloadFile = __DIR__.'/../../vendor/autoload.php';
 
 require $autoloadFile;
 
-$blinking = Matks\Vivian\Tools::blink('Mixed');
-$green = Matks\Vivian\Tools::green($blinking);
-$styled = Matks\Vivian\Tools::underline($green);
-$bordered = Matks\Vivian\Tools::doubleBorder($styled);
-
 $array = array(
     'Foo' => 'aaaaaaa',
     Matks\Vivian\Tools::blink('Blinker') => Matks\Vivian\Tools::underline('Underlined'),
     Matks\Vivian\Tools::blue('Blue') => $styled
 );
 
-echo $bordered;
-echo PHP_EOL;
 echo Matks\Vivian\Tools::s_phpArray($array);

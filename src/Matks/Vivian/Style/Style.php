@@ -17,12 +17,6 @@ class Style extends EscapeAttribute
     {
         $knownStyles = StyleManager::getKnownStyles();
 
-        $escapeCodes = array();
-        foreach ($knownStyles as $style) {
-            $code          = "\033[" . $style . "m";
-            $escapeCodes[] = $code;
-        }
-
-        return $escapeCodes;
+        return $knownStyles;
     }
 }

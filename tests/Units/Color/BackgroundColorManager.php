@@ -19,17 +19,21 @@ class BackgroundColorManager extends atoum
 
     public function testBackgroundColor()
     {
-        $testString = 'foo';
+        $result = Color\BackgroundColorManager::color(42);
 
         $this
-            ->string(Color\BackgroundColorManager::color($testString, 42))
-            ->isEqualTo("\033[42mfoo\033[0m");
+            ->object($result)
+            ->isInstanceOf('\Matks\Vivian\Color\BackgroundColor')
+            ->string($result->getEscapeCharacter())
+            ->isEqualTo("\033[42m");
 
-        $testString2 = 'a different string';
+        $result = Color\BackgroundColorManager::color(44);
 
         $this
-            ->string(Color\BackgroundColorManager::color($testString2, 44))
-            ->isEqualTo("\033[44ma different string\033[0m");
+            ->object($result)
+            ->isInstanceOf('\Matks\Vivian\Color\BackgroundColor')
+            ->string($result->getEscapeCharacter())
+            ->isEqualTo("\033[44m");
     }
 
     public function testUnknownBackgroundColor()
@@ -37,18 +41,8 @@ class BackgroundColorManager extends atoum
         $this
             ->exception(
                 function () {
-                    Color\BackgroundColorManager::color('foo', 6);
+                    Color\BackgroundColorManager::color(6);
                 }
             )->hasMessage('Unknown color ID 6');
-    }
-
-    public function testDoubleBackgroundColor()
-    {
-        $this
-            ->exception(
-                function () {
-                    Color\BackgroundColorManager::color("\033[42mfoo\033[0m", 43);
-                }
-            )->hasMessage('Given string already contains a color escape code');
     }
 }

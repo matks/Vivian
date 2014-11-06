@@ -3,8 +3,8 @@
 namespace Matks\Vivian;
 
 use Matks\Vivian\Border\BorderManager;
-use Matks\Vivian\Color\ForegroundColorManager;
 use Matks\Vivian\Color\BackgroundColorManager;
+use Matks\Vivian\Color\TextColorManager;
 use Matks\Vivian\Figlet\FigletManager;
 use Matks\Vivian\Structure\StructureManager;
 use Matks\Vivian\Style\StyleManager;
@@ -17,8 +17,8 @@ class Tools
      */
     public static function __callstatic($name, $params)
     {
-        if (array_key_exists($name, ForegroundColorManager::getKnownColors())) {
-            return ForegroundColorManager::$name($params);
+        if (array_key_exists($name, TextColorManager::getKnownColors())) {
+            return TextColorManager::$name($params);
         }
 
         if (BackgroundColorManager::isBackgroundCall($name)) {

@@ -9,32 +9,27 @@ use Exception;
  */
 abstract class AbstractColorManager
 {
-    const ANSI_ESCAPE_CODE_REGEX_BEGIN = '\\033\[';
-    const ANSI_ESCAPE_CODE_REGEX_END   = 'm';
+    const ANSI_ESCAPE_CODE_BEGIN = "\033[";
+    const ANSI_ESCAPE_CODE_END   = 'm';
 
     /**
-     * Format given string in chosen color
+     * Get color
      *
-     * @param string $string
-     * @param int    $colorID
+     * @param int $colorID
      *
-     * @return string
+     * @return EscapeAttribute color
      */
-    public static function color($string, $colorID)
+    public static function color($colorID)
     {
         if (!in_array($colorID, static::getKnownColors())) {
             throw new Exception("Unknown color ID $colorID");
         }
 
-        $isAlreadyColored = static::isAlreadyColored($string);
-        if ($isAlreadyColored) {
-            throw new Exception('Given string already contains a color escape code');
-        }
+        $colorClass = static::getColorClass();
 
-        $colorChar     = "\033[" . $colorID . "m";
-        $coloredString = $colorChar . $string . "\033[0m";
+        $color = new $colorClass($colorID);
 
-        return $coloredString;
+        return $color;
     }
 
     /**
@@ -45,21 +40,9 @@ abstract class AbstractColorManager
     abstract public static function getKnownColors();
 
     /**
-     * Check if given string already contains color escape code
+     * Get Color class
      *
-     * @param $string
-     *
-     * @return boolean
+     * @return string
      */
-    protected static function isAlreadyColored($string)
-    {
-        $knownColors          = static::getKnownColors();
-        $colorsFormattedList  = '(' . implode('|', $knownColors) . ')';
-        $coloredStringPattern = '#' . static::ANSI_ESCAPE_CODE_REGEX_BEGIN;
-        $coloredStringPattern .= $colorsFormattedList . static::ANSI_ESCAPE_CODE_REGEX_END . '#';
-
-        $result = preg_match($coloredStringPattern, $string);
-
-        return (boolean) $result;
-    }
+    abstract public static function getColorClass();
 }

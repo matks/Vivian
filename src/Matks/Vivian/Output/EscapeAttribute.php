@@ -9,52 +9,53 @@ use Exception;
  */
 abstract class EscapeAttribute
 {
-    /**
-     * @var string
-     */
-    private $name;
+    const ANSI_ESCAPE_CODE_BEGIN = "\033[";
+    const ANSI_ESCAPE_CODE_END   = 'm';
 
     /**
      * @var string
      */
-    private $code;
+    private $escapeCharacter;
 
     /**
      * @param $name
      * @param $code
      */
-    public function __construct($name, $code)
+    public function __construct($code)
     {
-        $escapeCode = "\033[" . $code . "m";
-
-        if (!in_array($escapeCode, $this->getAllowedEscapeCodes())) {
+        if (!in_array($code, $this->getAllowedEscapeCodes())) {
             throw new Exception("Forbidden code $code");
         }
 
-        $this->name = $name;
-
-        $this->code = $escapeCode;
-    }
-
-    public function __toString()
-    {
-        return $this->name;
+        $escapeCharacter       = $this->buildEscapeCharacter($code);
+        $this->escapeCharacter = $escapeCharacter;
     }
 
     /**
      * @return string
      */
-    public function getName()
+    public function getEscapeCharacter()
     {
-        return $this->name;
+        return $this->escapeCharacter;
+    }
+
+    public function equals(EscapeAttribute $escapeAttribute)
+    {
+        return ($escapeAttribute->getEscapeCharacter() === $this->getEscapeCharacter());
     }
 
     /**
+     * Build escape character to be print
+     *
+     * @param string $escapeCode
+     *
      * @return string
      */
-    public function getEscapeCode()
+    protected function buildEscapeCharacter($escapeCode)
     {
-        return $this->code;
+        $result = static::ANSI_ESCAPE_CODE_BEGIN . $escapeCode . static::ANSI_ESCAPE_CODE_END;
+
+        return $result;
     }
 
     /**
