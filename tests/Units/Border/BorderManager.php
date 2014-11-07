@@ -40,8 +40,8 @@ class BorderManager extends atoum
 
     public function testBorder()
     {
-        $testString      = 'foo';
-        $expectedString  = '+-----+' . PHP_EOL;
+        $testString     = 'foo';
+        $expectedString = '+-----+' . PHP_EOL;
         $expectedString .= '| foo |' . PHP_EOL;
         $expectedString .= '+-----+' . PHP_EOL;
 
@@ -52,8 +52,8 @@ class BorderManager extends atoum
 
     public function testDoubleBorder()
     {
-        $testString      = 'foo';
-        $expectedString  = '*=====*' . PHP_EOL;
+        $testString     = 'foo';
+        $expectedString = '*=====*' . PHP_EOL;
         $expectedString .= '# foo #' . PHP_EOL;
         $expectedString .= '*=====*' . PHP_EOL;
 

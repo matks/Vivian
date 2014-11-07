@@ -2,6 +2,7 @@
 
 namespace Matks\Vivian\Style;
 
+use Matks\Vivian\Output\Element;
 use Exception;
 
 /**
@@ -29,10 +30,15 @@ class StyleManager
         $knownStyles = static::getKnownStyles();
         $styleID     = $knownStyles[$name];
 
+        $style = static::style($styleID);
+
         // target string is expected to be:
         $targetString = $params[0][0];
 
-        return static::style($targetString, $styleID);
+        $element = new Element($targetString);
+        $element->addStyle($style);
+
+        return $element->render();
     }
 
     /**
@@ -43,16 +49,15 @@ class StyleManager
      *
      * @return string
      */
-    public static function style($string, $styleID)
+    public static function style($styleID)
     {
         if (!in_array($styleID, static::getKnownStyles())) {
             throw new Exception("Unknown style ID $styleID");
         }
 
-        $styleChar    = "\033[" . $styleID . "m";
-        $styledString = $styleChar . $string . "\033[0m";
+        $style = new Style($styleID);
 
-        return $styledString;
+        return $style;
     }
 
     /**

@@ -16,7 +16,7 @@ class StructureManager extends atoum
             'ccc'
         );
 
-        $expectedArray  = '# a' . PHP_EOL;
+        $expectedArray = '# a' . PHP_EOL;
         $expectedArray .= '# bb' . PHP_EOL;
         $expectedArray .= '# ccc' . PHP_EOL;
 
@@ -33,7 +33,7 @@ class StructureManager extends atoum
             'ccc'
         );
 
-        $expectedArray  = '# a' . PHP_EOL;
+        $expectedArray = '# a' . PHP_EOL;
         $expectedArray .= '# bb' . PHP_EOL;
         $expectedArray .= '# ccc' . PHP_EOL;
 
@@ -50,7 +50,7 @@ class StructureManager extends atoum
             'ccc'
         );
 
-        $expectedArray  = '    - a' . PHP_EOL;
+        $expectedArray = '    - a' . PHP_EOL;
         $expectedArray .= '    - bb' . PHP_EOL;
         $expectedArray .= '    - ccc' . PHP_EOL;
 
@@ -67,7 +67,7 @@ class StructureManager extends atoum
             'ccc' => 'done'
         );
 
-        $expectedArray  = '+-----+-------+' . PHP_EOL;
+        $expectedArray = '+-----+-------+' . PHP_EOL;
         $expectedArray .= '| a   | hello |' . PHP_EOL;
         $expectedArray .= '| bb  | 1     |' . PHP_EOL;
         $expectedArray .= '| ccc | done  |' . PHP_EOL;
@@ -86,7 +86,7 @@ class StructureManager extends atoum
             'ccc' => 'done'
         );
 
-        $expectedArray  = '    a   => hello' . PHP_EOL;
+        $expectedArray = '    a   => hello' . PHP_EOL;
         $expectedArray .= '    bb  => 1' . PHP_EOL;
         $expectedArray .= '    ccc => done' . PHP_EOL;
 

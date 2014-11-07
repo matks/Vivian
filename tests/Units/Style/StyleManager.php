@@ -19,17 +19,21 @@ class StyleManager extends atoum
 
     public function testStyle()
     {
-        $testString = 'foo';
+        $result = BaseStyle\StyleManager::style(1);
 
         $this
-            ->string(BaseStyle\StyleManager::style($testString, 1))
-            ->isEqualTo("\033[1mfoo\033[0m");
+            ->object($result)
+            ->isInstanceOf('\Matks\Vivian\Style\Style')
+            ->string($result->getEscapeCharacter())
+            ->isEqualTo("\033[1m");
 
-        $testString2 = 'a different string';
+        $result = BaseStyle\StyleManager::style(5);
 
         $this
-            ->string(BaseStyle\StyleManager::style($testString2, 4))
-            ->isEqualTo("\033[4ma different string\033[0m");
+            ->object($result)
+            ->isInstanceOf('\Matks\Vivian\Style\Style')
+            ->string($result->getEscapeCharacter())
+            ->isEqualTo("\033[5m");
     }
 
     public function testUnknownStyle()
@@ -37,19 +41,8 @@ class StyleManager extends atoum
         $this
             ->exception(
                 function () {
-                    BaseStyle\StyleManager::style('foo', 10);
+                    BaseStyle\StyleManager::style(10);
                 }
             )->hasMessage('Unknown style ID 10');
-    }
-
-    public function testDoubleBackgroundStyle()
-    {
-        $testString = 'foo';
-        $style1     = BaseStyle\StyleManager::style($testString, 1);
-        $style2     = BaseStyle\StyleManager::style($style1, 5);
-
-        $this
-            ->string($style2)
-            ->isEqualTo("\033[5m\033[1mfoo\033[0m\033[0m");
     }
 }

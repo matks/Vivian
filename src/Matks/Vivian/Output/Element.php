@@ -204,6 +204,6 @@ class Element
         $escapeCodePattern = '#' . static::ANSI_ESCAPE_CODE_REGEX . '#';
         $result            = preg_match($escapeCodePattern, $string);
 
-        return (boolean)$result;
+        return (boolean) $result;
     }
 }

@@ -29,7 +29,7 @@ class Element extends atoum
 
         $this
             ->object($element->getTextColor())
-                ->isEqualTo($color1);
+            ->isEqualTo($color1);
 
         $color2 = new Mock\Matks\Vivian\Color\TextColor(37);
         $element->setTextColor($color2);
@@ -104,17 +104,16 @@ class Element extends atoum
         $bgColor   = new Mock\Matks\Vivian\Color\BackgroundColor(41);
 
         $element->setTextColor($textColor)
-                ->setBackgroundColor($bgColor)
-                ->addStyle($style1)
-                ->addStyle($style2)
-        ;
+            ->setBackgroundColor($bgColor)
+            ->addStyle($style1)
+            ->addStyle($style2);
 
-        $output = $element->render();
+        $output         = $element->render();
         $expectedString = "\033[5m\033[1m\033[41m\033[33mtest element\033[0m\033[0m\033[0m\033[0m";
 
         $this
             ->string($output)
-                ->isEqualTo($expectedString);
+            ->isEqualTo($expectedString);
     }
 
     public function testWrongString()

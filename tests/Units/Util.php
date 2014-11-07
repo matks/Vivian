@@ -25,7 +25,7 @@ class Util extends atoum
         );
 
         $testArray3 = array(
-            'aaaa'     => 'b',
+            'aaaa'               => 'b',
             "\033[32mlol\033[0m" => 'no'
         );
 
@@ -55,8 +55,8 @@ class Util extends atoum
         );
 
         $testArray3 = array(
-            'aaaa'     => 'bbbbbb',
-            'no' => "\033[32mlol\033[0m"
+            'aaaa' => 'bbbbbb',
+            'no'   => "\033[32mlol\033[0m"
         );
 
         $this

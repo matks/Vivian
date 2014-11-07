@@ -2,7 +2,6 @@
 
 namespace Matks\Vivian\Color;
 
-use Matks\Vivian\Color\BackgroundColorManager;
 use Matks\Vivian\Output\EscapeAttribute;
 
 /**

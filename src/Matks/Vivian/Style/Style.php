@@ -2,7 +2,6 @@
 
 namespace Matks\Vivian\Style;
 
-use Matks\Vivian\Style\StyleManager;
 use Matks\Vivian\Output\EscapeAttribute;
 
 /**
