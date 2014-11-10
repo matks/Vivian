@@ -10,9 +10,9 @@ use Exception;
 /**
  * Element
  *
- * String to be echoed
+ * Manageable element
  */
-class Element
+abstract class Element
 {
     const ANSI_ESCAPE_CODE_RESET = "\033[0m";
     const ANSI_ESCAPE_CODE_REGEX = '\\033\[[\d]+m';
@@ -31,40 +31,6 @@ class Element
      * @var array
      */
     private $styles;
-
-    /**
-     * @var string
-     */
-    private $text;
-
-    /**
-     * @param $text
-     */
-    public function __construct($text)
-    {
-        if (!$text) {
-            throw new Exception('No text provided');
-        }
-
-        if ($this->containsEscapeCharacters($text)) {
-            throw new Exception('Given text contains an escape code');
-        }
-
-        $this->text = $text;
-    }
-
-    public function __toString()
-    {
-        return $this->text;
-    }
-
-    /**
-     * @return string
-     */
-    public function getText()
-    {
-        return $this->text;
-    }
 
     /**
      * @param BackgroundColor $backgroundColor
@@ -93,7 +59,7 @@ class Element
      */
     public function setTextColor(TextColor $textColor)
     {
-        $this->color = $textColor;
+        $this->textColor = $textColor;
 
         return $this;
     }
@@ -103,7 +69,7 @@ class Element
      */
     public function getTextColor()
     {
-        return $this->color;
+        return $this->textColor;
     }
 
     /**
@@ -150,32 +116,7 @@ class Element
         return $this->styles;
     }
 
-    public function render()
-    {
-        $textIsColored       = ($this->getTextColor() !== null);
-        $backgroundIsColored = ($this->getBackgroundColor() !== null);
-
-        $styles          = $this->getStyles();
-        $stringHasStyles = (!empty($styles));
-
-        $text = $this->getText();
-
-        if ($textIsColored) {
-            $text = $this->frame($text, $this->getTextColor()->getEscapeCharacter());
-        }
-
-        if ($backgroundIsColored) {
-            $text = $this->frame($text, $this->getBackgroundColor()->getEscapeCharacter());
-        }
-
-        if ($stringHasStyles) {
-            foreach ($styles as $style) {
-                $text = $this->frame($text, $style->getEscapeCharacter());
-            }
-        }
-
-        return $text;
-    }
+    abstract public function render();
 
     /**
      * Apply escape code to string and close section
@@ -190,20 +131,5 @@ class Element
         $result = $escapeCharacter . $string . static::ANSI_ESCAPE_CODE_RESET;
 
         return $result;
-    }
-
-    /**
-     * Check if given string contains color escape code
-     *
-     * @param string $string
-     *
-     * @return boolean
-     */
-    private static function containsEscapeCharacters($string)
-    {
-        $escapeCodePattern = '#' . static::ANSI_ESCAPE_CODE_REGEX . '#';
-        $result            = preg_match($escapeCodePattern, $string);
-
-        return (boolean) $result;
     }
 }

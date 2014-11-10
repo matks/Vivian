@@ -2,7 +2,7 @@
 
 namespace Matks\Vivian\Color;
 
-use Matks\Vivian\Output\Element;
+use Matks\Vivian\Output\TextElement;
 
 /**
  * Foreground Color manager
@@ -44,7 +44,7 @@ class TextColorManager extends AbstractColorManager
         // target string is expected to be:
         $targetString = $params[0][0];
 
-        $element = new Element($targetString);
+        $element = new TextElement($targetString);
         $element->setTextColor($color);
 
         return $element->render();

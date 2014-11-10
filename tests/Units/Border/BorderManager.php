@@ -2,9 +2,10 @@
 
 namespace Matks\Vivian\tests\Units\Border;
 
-use Matks\Vivian\Border;
+use Matks\Vivian\Border as BaseBorder;
 
 use \atoum;
+use Mock;
 
 class BorderManager extends atoum
 {
@@ -14,7 +15,7 @@ class BorderManager extends atoum
         $expectedString = 'Hello' . PHP_EOL . '-----' . PHP_EOL;
 
         $this
-            ->string(Border\BorderManager::underlineBorder(array($testString)))
+            ->string(BaseBorder\BorderManager::underlineBorder(array($testString)))
             ->isEqualTo($expectedString);
     }
 
@@ -23,8 +24,10 @@ class BorderManager extends atoum
         $testString     = 'foo';
         $expectedString = 'foo' . PHP_EOL . '---' . PHP_EOL;
 
+        $border = new Mock\Matks\Vivian\Border\Border('underline');
+
         $this
-            ->string(Border\BorderManager::__underlineBorder($testString))
+            ->string(BaseBorder\BorderManager::buildBorder($testString, $border))
             ->isEqualTo($expectedString);
     }
 
@@ -33,8 +36,10 @@ class BorderManager extends atoum
         $testString     = 'foo';
         $expectedString = 'foo' . PHP_EOL . '===' . PHP_EOL;
 
+        $border = new Mock\Matks\Vivian\Border\Border('underline', '=');
+
         $this
-            ->string(Border\BorderManager::__doubleUnderlineBorder($testString))
+            ->string(BaseBorder\BorderManager::buildBorder($testString, $border))
             ->isEqualTo($expectedString);
     }
 
@@ -45,8 +50,10 @@ class BorderManager extends atoum
         $expectedString .= '| foo |' . PHP_EOL;
         $expectedString .= '+-----+' . PHP_EOL;
 
+        $border = new Mock\Matks\Vivian\Border\Border('frame');
+
         $this
-            ->string(Border\BorderManager::__border($testString))
+            ->string(BaseBorder\BorderManager::buildBorder($testString, $border))
             ->isEqualTo($expectedString);
     }
 
@@ -57,8 +64,10 @@ class BorderManager extends atoum
         $expectedString .= '# foo #' . PHP_EOL;
         $expectedString .= '*=====*' . PHP_EOL;
 
+        $border = new Mock\Matks\Vivian\Border\Border('frame', '=', '#', '*');
+
         $this
-            ->string(Border\BorderManager::__doubleBorder($testString))
+            ->string(BaseBorder\BorderManager::buildBorder($testString, $border))
             ->isEqualTo($expectedString);
     }
 
@@ -67,7 +76,7 @@ class BorderManager extends atoum
         $this
             ->exception(
                 function () {
-                    Border\BorderManager::unknown('foo');
+                    BaseBorder\BorderManager::unknown('foo');
                 }
             )->hasMessage('Unknown border function name unknown');
     }

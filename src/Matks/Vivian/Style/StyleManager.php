@@ -2,7 +2,7 @@
 
 namespace Matks\Vivian\Style;
 
-use Matks\Vivian\Output\Element;
+use Matks\Vivian\Output\TextElement;
 use Exception;
 
 /**
@@ -35,7 +35,7 @@ class StyleManager
         // target string is expected to be:
         $targetString = $params[0][0];
 
-        $element = new Element($targetString);
+        $element = new TextElement($targetString);
         $element->addStyle($style);
 
         return $element->render();

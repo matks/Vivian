@@ -2,6 +2,7 @@
 
 namespace Matks\Vivian\Border;
 
+use Matks\Vivian\Output\BorderedElement;
 use Matks\Vivian\Util;
 use Exception;
 
@@ -32,59 +33,7 @@ class BorderManager
     }
 
     /**
-     * Underline a string with '-'
-     *
-     * Be careful, this adds two end-of-line
-     *
-     * @param string $string
-     *
-     * @return string
-     */
-    public static function __underlineBorder($string)
-    {
-        return static::buildUnderline($string);
-    }
-
-    /**
-     * Underline a string with '='
-     *
-     * Be careful, this adds two end-of-line
-     *
-     * @param string $string
-     *
-     * @return string
-     */
-    public static function __doubleUnderlineBorder($string)
-    {
-        return static::buildUnderline($string, '=');
-    }
-
-    /**
-     * Draw a border around a string
-     *
-     * @param string $string
-     *
-     * @return string
-     */
-    public static function __border($string)
-    {
-        return static::buildBorder($string);
-    }
-
-    /**
-     * Draw a double border around a string
-     *
-     * @param string $string
-     *
-     * @return string
-     */
-    public static function __doubleBorder($string)
-    {
-        return static::buildBorder($string, '=', '#', '*');
-    }
-
-    /**
-     * Get allowed styles
+     * Get known borders
      *
      * @return array
      */
@@ -100,28 +49,133 @@ class BorderManager
         return $styles;
     }
 
-    private static function buildUnderline($string, $lineCharacter = '-')
+    /**
+     * Render bordered string
+     *
+     * @param string $string
+     * @param Border $border
+     *
+     * @return string
+     * @throws Exception
+     */
+    public static function buildBorder($string, Border $border)
+    {
+        switch ($border->getType()) {
+            case Border::TYPE_UNDERLINE:
+                $result = static::buildUnderline($string, $border);
+                break;
+            case Border::TYPE_FRAME:
+                $result = static::buildFrame($string, $border);
+                break;
+            default:
+                throw new Exception('Unknown border type ' . $border->getType());
+        }
+
+        return $result;
+    }
+
+    /**
+     * Underline with the given Border the given string
+     *
+     * @param string $string
+     * @param Border $border
+     *
+     * @return string
+     */
+    private static function buildUnderline($string, Border $border)
     {
         $stringLength = Util::getVisibleStringLength($string);
-        $underline    = Util::buildPatternLine($lineCharacter, $stringLength);
+        $underline    = Util::buildPatternLine($border->getLineCharacter(), $stringLength);
 
         $result = $string . PHP_EOL . $underline . PHP_EOL;
 
         return $result;
     }
 
-    private static function buildBorder($string, $lineCharacter = '-', $columnCharacter = '|', $crossCharacter = '+')
+    /**
+     * Frame with the given Border the given string
+     *
+     * @param string $string
+     * @param Border $border
+     *
+     * @return string
+     */
+    private static function buildFrame($string, Border $border)
     {
         $stringLength = Util::getVisibleStringLength($string);
 
-        $line = Util::buildPatternLine($lineCharacter, $stringLength + 2);
+        $line = Util::buildPatternLine($border->getLineCharacter(), $stringLength + 2);
 
-        $firstLine = $crossCharacter . $line . $crossCharacter;
-        $mainLine  = $columnCharacter . ' ' . $string . ' ' . $columnCharacter;
+        $firstLine = $border->getCrossCharacter() . $line . $border->getCrossCharacter();
+        $mainLine  = $border->getColumnCharacter() . ' ' . $string . ' ' . $border->getColumnCharacter();
         $lastLine  = $firstLine;
 
         $result = $firstLine . PHP_EOL . $mainLine . PHP_EOL . $lastLine . PHP_EOL;
 
         return $result;
+    }
+
+    /**
+     * Underline a string with '-'
+     *
+     * Be careful, this adds two end-of-line
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    private static function __underlineBorder($string)
+    {
+        $border = new Border(Border::TYPE_UNDERLINE);
+        $borderedElement = new BorderedElement($string, $border);
+
+        return $borderedElement->render();
+    }
+
+    /**
+     * Underline a string with '='
+     *
+     * Be careful, this adds two end-of-line
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    private static function __doubleUnderlineBorder($string)
+    {
+        $border = new Border(Border::TYPE_UNDERLINE, '=');
+        $borderedElement = new BorderedElement($string, $border);
+
+        return $borderedElement->render();
+    }
+
+    /**
+     * Draw a border around a string
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    private static function __border($string)
+    {
+        $border = new Border(Border::TYPE_FRAME);
+        $borderedElement = new BorderedElement($string, $border);
+
+        return $borderedElement->render();
+    }
+
+    /**
+     * Draw a double border around a string
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    private static function __doubleBorder($string)
+    {
+        $border = new Border(Border::TYPE_FRAME, '=', '#', '*');
+        $borderedElement = new BorderedElement($string, $border);
+
+        return $borderedElement->render();
     }
 }
