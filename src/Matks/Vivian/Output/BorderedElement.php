@@ -43,7 +43,7 @@ class BorderedElement extends TextElement
      */
     public function render()
     {
-        $text = parent::render();
+        $text         = parent::render();
         $borderedText = BorderManager::buildBorder($text, $this->border);
 
         return $borderedText;

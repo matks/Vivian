@@ -126,7 +126,7 @@ class BorderManager
      */
     private static function __underlineBorder($string)
     {
-        $border = new Border(Border::TYPE_UNDERLINE);
+        $border          = new Border(Border::TYPE_UNDERLINE);
         $borderedElement = new BorderedElement($string, $border);
 
         return $borderedElement->render();
@@ -143,7 +143,7 @@ class BorderManager
      */
     private static function __doubleUnderlineBorder($string)
     {
-        $border = new Border(Border::TYPE_UNDERLINE, '=');
+        $border          = new Border(Border::TYPE_UNDERLINE, '=');
         $borderedElement = new BorderedElement($string, $border);
 
         return $borderedElement->render();
@@ -158,7 +158,7 @@ class BorderManager
      */
     private static function __border($string)
     {
-        $border = new Border(Border::TYPE_FRAME);
+        $border          = new Border(Border::TYPE_FRAME);
         $borderedElement = new BorderedElement($string, $border);
 
         return $borderedElement->render();
@@ -173,7 +173,7 @@ class BorderManager
      */
     private static function __doubleBorder($string)
     {
-        $border = new Border(Border::TYPE_FRAME, '=', '#', '*');
+        $border          = new Border(Border::TYPE_FRAME, '=', '#', '*');
         $borderedElement = new BorderedElement($string, $border);
 
         return $borderedElement->render();

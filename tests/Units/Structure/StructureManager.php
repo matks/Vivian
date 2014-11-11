@@ -2,9 +2,10 @@
 
 namespace Matks\Vivian\tests\Units\Structure;
 
-use Matks\Vivian\Structure;
+use Matks\Vivian\Structure as BaseStructure;
 
 use \atoum;
+use Mock;
 
 class StructureManager extends atoum
 {
@@ -21,7 +22,7 @@ class StructureManager extends atoum
         $expectedArray .= '# ccc' . PHP_EOL;
 
         $this
-            ->string(Structure\StructureManager::s_list1(array($array)))
+            ->string(BaseStructure\StructureManager::s_list1(array($array)))
             ->isEqualTo($expectedArray);
     }
 
@@ -37,8 +38,10 @@ class StructureManager extends atoum
         $expectedArray .= '# bb' . PHP_EOL;
         $expectedArray .= '# ccc' . PHP_EOL;
 
+        $structure = new Mock\Matks\Vivian\Structure\Structure('list', '#');
+
         $this
-            ->string(Structure\StructureManager::__s_list1($array))
+            ->string(BaseStructure\StructureManager::buildStructure($array, $structure))
             ->isEqualTo($expectedArray);
     }
 
@@ -54,8 +57,10 @@ class StructureManager extends atoum
         $expectedArray .= '    - bb' . PHP_EOL;
         $expectedArray .= '    - ccc' . PHP_EOL;
 
+        $structure = new Mock\Matks\Vivian\Structure\Structure('list', '-', '    ');
+
         $this
-            ->string(Structure\StructureManager::__s_list2($array))
+            ->string(BaseStructure\StructureManager::buildStructure($array, $structure))
             ->isEqualTo($expectedArray);
     }
 
@@ -73,8 +78,11 @@ class StructureManager extends atoum
         $expectedArray .= '| ccc | done  |' . PHP_EOL;
         $expectedArray .= '+-----+-------+' . PHP_EOL;
 
+        $borderMock = new Mock\Matks\Vivian\Border\Border('frame');
+        $structure  = new Mock\Matks\Vivian\Structure\Structure('array', '', null, '|', $borderMock);
+
         $this
-            ->string(Structure\StructureManager::__s_array($array))
+            ->string(BaseStructure\StructureManager::buildStructure($array, $structure))
             ->isEqualTo($expectedArray);
     }
 
@@ -86,12 +94,14 @@ class StructureManager extends atoum
             'ccc' => 'done'
         );
 
-        $expectedArray = '    a   => hello' . PHP_EOL;
+        $expectedArray .= '    a   => hello' . PHP_EOL;
         $expectedArray .= '    bb  => 1' . PHP_EOL;
         $expectedArray .= '    ccc => done' . PHP_EOL;
 
+        $structure = new Mock\Matks\Vivian\Structure\Structure('array', '', '    ', '=>', null);
+
         $this
-            ->string(Structure\StructureManager::__s_phpArray($array))
+            ->string(BaseStructure\StructureManager::buildStructure($array, $structure))
             ->isEqualTo($expectedArray);
     }
 
@@ -100,7 +110,7 @@ class StructureManager extends atoum
         $this
             ->exception(
                 function () {
-                    Structure\StructureManager::unknown('foo');
+                    BaseStructure\StructureManager::unknown('foo');
                 }
             )->hasMessage('Unknown structure function name unknown');
     }
