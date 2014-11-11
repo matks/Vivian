@@ -3,6 +3,7 @@ Vivian
 
 [![Latest Stable Version](https://poser.pugx.org/matks/vivian/v/stable.svg)](https://packagist.org/packages/matks/vivian)
 [![Build Status](https://travis-ci.org/matks/Vivian.png)](https://travis-ci.org/matks/Vivian)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/matks/Vivian/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/matks/Vivian/?branch=master)
 [![Total Downloads](https://poser.pugx.org/matks/vivian/downloads.svg)](https://packagist.org/packages/matks/vivian)
 [![Latest Unstable Version](https://poser.pugx.org/matks/vivian/v/unstable.svg)](https://packagist.org/packages/matks/vivian)
 [![License](https://poser.pugx.org/matks/vivian/license.svg)](https://packagist.org/packages/matks/vivian)
