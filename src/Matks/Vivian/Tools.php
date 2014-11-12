@@ -2,11 +2,12 @@
 
 namespace Matks\Vivian;
 
-use Matks\Vivian\Border\Border;
-use Matks\Vivian\Color\Color;
-use Matks\Vivian\Figlet\Figlet;
-use Matks\Vivian\Structure\Structure;
-use Matks\Vivian\Style\Style;
+use Matks\Vivian\Border\BorderManager;
+use Matks\Vivian\Color\BackgroundColorManager;
+use Matks\Vivian\Color\TextColorManager;
+use Matks\Vivian\Figlet\FigletManager;
+use Matks\Vivian\Structure\StructureManager;
+use Matks\Vivian\Style\StyleManager;
 use Exception;
 
 class Tools
@@ -16,24 +17,28 @@ class Tools
      */
     public static function __callstatic($name, $params)
     {
-        if (array_key_exists($name, Color::getKnownColors())) {
-            return Color::$name($params);
+        if (array_key_exists($name, TextColorManager::getKnownColors())) {
+            return TextColorManager::$name($params);
         }
 
-        if (in_array($name, Border::getKnownBorders())) {
-            return Border::$name($params);
+        if (BackgroundColorManager::isBackgroundCall($name)) {
+            return BackgroundColorManager::$name($params);
         }
 
-        if (in_array($name, Structure::getDisplayableStructures())) {
-            return Structure::$name($params);
+        if (in_array($name, BorderManager::getKnownBorders())) {
+            return BorderManager::$name($params);
         }
 
-        if (array_key_exists($name, Style::getKnownStyles())) {
-            return Style::$name($params);
+        if (in_array($name, StructureManager::getDisplayableStructures())) {
+            return StructureManager::$name($params);
         }
 
-        if (Figlet::isFigletCall($name)) {
-            return Figlet::$name($params);
+        if (array_key_exists($name, StyleManager::getKnownStyles())) {
+            return StyleManager::$name($params);
+        }
+
+        if (FigletManager::isFigletCall($name)) {
+            return FigletManager::$name($params);
         }
 
         throw new Exception("Unknown function name $name");
