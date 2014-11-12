@@ -59,6 +59,10 @@ php tests/Console/test-mixed
 php tests/Console/test-structure
 php tests/Console/test-figlet
 ```
+or
+```bash
+bash tests/Console/test-all.sh
+```
 
 ## More about ANSI/VT100 terminal control
 
