@@ -47,7 +47,7 @@ class StyleManager
      * @param string $string
      * @param int    $styleID
      *
-     * @return string
+     * @return Style
      */
     public static function style($styleID)
     {
