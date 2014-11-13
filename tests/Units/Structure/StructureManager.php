@@ -94,7 +94,7 @@ class StructureManager extends atoum
             'ccc' => 'done'
         );
 
-        $expectedArray .= '    a   => hello' . PHP_EOL;
+        $expectedArray = '    a   => hello' . PHP_EOL;
         $expectedArray .= '    bb  => 1' . PHP_EOL;
         $expectedArray .= '    ccc => done' . PHP_EOL;
 
