@@ -97,7 +97,6 @@ class StructuredElements extends atoum
             $textElement3
         );
 
-
         $borderMock         = new Mock\Matks\Vivian\Border\Border('frame');
         $structureMock      = new Mock\Matks\Vivian\Structure\Structure('array', null, null, '|', $borderMock);
         $structuredElements = new Output\StructuredElements($array, $structureMock);

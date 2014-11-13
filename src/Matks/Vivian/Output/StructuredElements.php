@@ -29,8 +29,8 @@ class StructuredElements
      */
     public function __construct(array $elements, Structure $structure)
     {
-        foreach($elements as $element) {
-            if (!($element instanceOf \Matks\Vivian\Output\TextElement)) {
+        foreach ($elements as $element) {
+            if (!($element instanceof \Matks\Vivian\Output\TextElement)) {
                 throw new \InvalidArgumentException('Provided array should contain only TextElement, '.get_class($element).' provided instead');
             }
         }
@@ -62,7 +62,7 @@ class StructuredElements
      */
     public function render()
     {
-        $renderFunction = function(&$element, $key) {
+        $renderFunction = function (&$element, $key) {
             $element = $element->render();
         };
         array_walk($this->elements, $renderFunction);
