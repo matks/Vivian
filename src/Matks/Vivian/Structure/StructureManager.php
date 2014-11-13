@@ -68,10 +68,10 @@ class StructureManager
     {
         switch ($structure->getType()) {
             case Structure::TYPE_LIST:
-                $result = static::buildList($array, $structure);
+                $result = self::buildList($array, $structure);
                 break;
             case Structure::TYPE_ARRAY:
-                $result = static::buildArray($array, $structure);
+                $result = self::buildArray($array, $structure);
                 break;
             default:
                 throw new Exception('Unknown structure type ' . $structure->getType());
@@ -185,7 +185,7 @@ class StructureManager
         $insertTab = ($structure->getTab()) ? true : false;
 
         if ($drawBorders) {
-            $firstLine = static::printBorder($structure->getBorder(), $maxKeyLength, $maxValueLength);
+            $firstLine = self::printBorder($structure->getBorder(), $maxKeyLength, $maxValueLength);
             if ($insertTab) {
                 $firstLine = $structure->getTab() . $firstLine;
             }
@@ -195,7 +195,7 @@ class StructureManager
 
         $lines = '';
         foreach ($array as $key => $value) {
-            $lines .= static::printStructureLine($key, $value, $structure, $maxKeyLength, $maxValueLength);
+            $lines .= self::printStructureLine($key, $value, $structure, $maxKeyLength, $maxValueLength);
         }
 
         $lastLine = $firstLine;

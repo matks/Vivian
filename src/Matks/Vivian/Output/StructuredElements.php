@@ -42,9 +42,9 @@ class StructuredElements
     /**
      * @return array
      */
-    public function getArray()
+    public function getElements()
     {
-        return $this->array;
+        return $this->elements;
     }
 
     /**

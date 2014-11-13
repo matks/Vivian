@@ -62,10 +62,10 @@ class BorderManager
     {
         switch ($border->getType()) {
             case Border::TYPE_UNDERLINE:
-                $result = static::buildUnderline($string, $border);
+                $result = self::buildUnderline($string, $border);
                 break;
             case Border::TYPE_FRAME:
-                $result = static::buildFrame($string, $border);
+                $result = self::buildFrame($string, $border);
                 break;
             default:
                 throw new Exception('Unknown border type ' . $border->getType());
