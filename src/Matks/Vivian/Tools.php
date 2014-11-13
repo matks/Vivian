@@ -14,6 +14,8 @@ class Tools
 {
     /**
      * Enable to use functions such as Tools::green('random string')
+     *
+     * @return string
      */
     public static function __callstatic($name, $params)
     {

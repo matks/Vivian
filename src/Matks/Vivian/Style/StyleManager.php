@@ -44,8 +44,7 @@ class StyleManager
     /**
      * Format given string in chosen style
      *
-     * @param string $string
-     * @param int    $styleID
+     * @param int $styleID
      *
      * @return Style
      */
@@ -63,7 +62,7 @@ class StyleManager
     /**
      * Get allowed styles
      *
-     * @return array
+     * @return string[]
      */
     public static function getKnownStyles()
     {

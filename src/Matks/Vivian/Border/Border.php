@@ -33,7 +33,7 @@ class Border
     private $crossCharacter;
 
     /**
-     * @param string $borderType
+     * @param string $type
      * @param string $lineCharacter
      * @param string $columnCharacter
      * @param string $crossCharacter
@@ -83,7 +83,7 @@ class Border
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     private function getAllowedTypes()
     {

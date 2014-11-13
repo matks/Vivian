@@ -109,13 +109,16 @@ abstract class Element
     }
 
     /**
-     * @return array
+     * @return Style[]
      */
     public function getStyles()
     {
         return $this->styles;
     }
 
+    /**
+     * @return string
+     */
     abstract public function render();
 
     /**

@@ -19,7 +19,7 @@ class TextElement extends Element
     private $text;
 
     /**
-     * @param $text
+     * @param string $text
      */
     public function __construct($text)
     {
@@ -34,6 +34,9 @@ class TextElement extends Element
         $this->text = $text;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->text;
@@ -47,6 +50,9 @@ class TextElement extends Element
         return $this->text;
     }
 
+    /**
+     * @return string
+     */
     public function render()
     {
         $textIsColored       = ($this->getTextColor() !== null);
@@ -86,6 +92,6 @@ class TextElement extends Element
         $escapeCodePattern = '#' . static::ANSI_ESCAPE_CODE_REGEX . '#';
         $result            = preg_match($escapeCodePattern, $string);
 
-        return (boolean) $result;
+        return (boolean)$result;
     }
 }

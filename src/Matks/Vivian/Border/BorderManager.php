@@ -35,7 +35,7 @@ class BorderManager
     /**
      * Get known borders
      *
-     * @return array
+     * @return string[]
      */
     public static function getKnownBorders()
     {

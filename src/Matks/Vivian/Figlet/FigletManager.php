@@ -76,7 +76,7 @@ class FigletManager
      *
      * The fonts provided are the one packaged in vendor packaged/figlet
      *
-     * @return array
+     * @return string[]
      */
     public static function getKnownFonts()
     {

@@ -13,7 +13,7 @@ class Util
      *
      * @param array $array
      *
-     * @return integer
+     * @return int
      */
     public static function getMaxKeyLength(array $array)
     {
@@ -36,7 +36,7 @@ class Util
      *
      * @param array $array
      *
-     * @return integer
+     * @return int
      */
     public static function getMaxValueLength(array $array)
     {
@@ -55,8 +55,8 @@ class Util
     /**
      * Build a string composed of $pattern repeated $length times
      *
-     * @param string  $pattern
-     * @param integer $length
+     * @param string $pattern
+     * @param int    $length
      *
      * @return string
      */

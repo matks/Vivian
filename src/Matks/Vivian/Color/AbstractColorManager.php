@@ -35,7 +35,7 @@ abstract class AbstractColorManager
     /**
      * Get allowed colors
      *
-     * @return array
+     * @return string[]
      */
     public static function getKnownColors()
     {

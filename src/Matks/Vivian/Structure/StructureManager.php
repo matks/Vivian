@@ -117,7 +117,7 @@ class StructureManager
      */
     private static function __s_array($array)
     {
-        $border = new Border(Border::TYPE_FRAME);
+        $border    = new Border(Border::TYPE_FRAME);
         $structure = new Structure(Structure::TYPE_ARRAY, '', null, '|', $border);
 
         return static::buildStructure($array, $structure);
@@ -182,7 +182,7 @@ class StructureManager
         $maxKeyLength   = Util::getMaxKeyLength($array);
         $maxValueLength = Util::getMaxValueLength($array);
         $drawBorders    = ($structure->getBorder()) ? true : false;
-        $insertTab = ($structure->getTab()) ? true : false;
+        $insertTab      = ($structure->getTab()) ? true : false;
 
         if ($drawBorders) {
             $firstLine = self::printBorder($structure->getBorder(), $maxKeyLength, $maxValueLength);
@@ -204,6 +204,13 @@ class StructureManager
         return $result;
     }
 
+    /**
+     * @param Border $border
+     * @param int    $maxKeyLength
+     * @param int    $maxValueLength
+     *
+     * @return string
+     */
     private static function printBorder(Border $border, $maxKeyLength, $maxValueLength)
     {
         $result = '';
@@ -217,11 +224,20 @@ class StructureManager
         return $result;
     }
 
+    /**
+     * @param string    $key
+     * @param string    $value
+     * @param Structure $structure
+     * @param int       $maxKeyLength
+     * @param int       $maxValueLength
+     *
+     * @return string
+     */
     private static function printStructureLine($key, $value, Structure $structure, $maxKeyLength, $maxValueLength)
     {
-        $result = '';
+        $result    = '';
         $insertTab = ($structure->getTab()) ? true : false;
-        $border = $structure->getBorder();
+        $border    = $structure->getBorder();
 
         if ($border) {
             $keyLength        = Util::getVisibleStringLength($key);

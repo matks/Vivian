@@ -31,7 +31,7 @@ class StructuredElements
     {
         foreach ($elements as $element) {
             if (!($element instanceof \Matks\Vivian\Output\TextElement)) {
-                throw new \InvalidArgumentException('Provided array should contain only TextElement, '.get_class($element).' provided instead');
+                throw new \InvalidArgumentException('Provided array should contain only TextElement, ' . get_class($element) . ' provided instead');
             }
         }
 
@@ -40,7 +40,7 @@ class StructuredElements
     }
 
     /**
-     * @return array
+     * @return TextElement[]
      */
     public function getElements()
     {

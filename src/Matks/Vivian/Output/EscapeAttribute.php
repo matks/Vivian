@@ -18,8 +18,7 @@ abstract class EscapeAttribute
     private $escapeCharacter;
 
     /**
-     * @param $name
-     * @param $code
+     * @param string $code
      */
     public function __construct($code)
     {
@@ -39,6 +38,11 @@ abstract class EscapeAttribute
         return $this->escapeCharacter;
     }
 
+    /**
+     * @param EscapeAttribute $escapeAttribute
+     *
+     * @return bool
+     */
     public function equals(EscapeAttribute $escapeAttribute)
     {
         return ($escapeAttribute->getEscapeCharacter() === $this->getEscapeCharacter());
@@ -61,7 +65,7 @@ abstract class EscapeAttribute
     /**
      * Get allowed escape codes
      *
-     * @return array
+     * @return string[]
      */
     abstract protected function getAllowedEscapeCodes();
 }

@@ -83,7 +83,7 @@ class BackgroundColorManager extends AbstractColorManager
     /**
      * Get allowed colors
      *
-     * @return array
+     * @return string[]
      */
     public static function getKnownColors()
     {

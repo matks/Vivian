@@ -107,7 +107,7 @@ class Structure
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     private function getAllowedTypes()
     {

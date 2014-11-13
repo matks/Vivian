@@ -19,9 +19,10 @@ class BorderedElement extends TextElement
     private $border;
 
     /**
-     * @param $text
+     * @param string $text
+     * @param Border $border
      */
-    public function __construct($text, $border)
+    public function __construct($text, Border $border)
     {
         parent::__construct($text);
 
