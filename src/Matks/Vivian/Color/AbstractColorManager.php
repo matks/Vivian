@@ -37,12 +37,20 @@ abstract class AbstractColorManager
      *
      * @return array
      */
-    abstract public static function getKnownColors();
+    public static function getKnownColors()
+    {
+        // it is impossible to make abstract static functions since PHP 5.2
+        throw new \RuntimeException('Do not use AbstractColorManager, use its children instead');
+    }
 
     /**
      * Get Color class
      *
      * @return string
      */
-    abstract public static function getColorClass();
+    public static function getColorClass()
+    {
+        // it is impossible to make abstract static functions since PHP 5.2
+        throw new \RuntimeException('Do not use AbstractColorManager, use its children instead');
+    }
 }
