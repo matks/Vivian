@@ -2,133 +2,120 @@
 
 namespace Matks\Vivian\Structure;
 
-use Matks\Vivian\Util;
+use Matks\Vivian\Border\Border;
+use Exception;
 
 /**
- * Array print functions
+ * Border element
  */
 class Structure
 {
-    /**
-     * PHP does not allow use of function names
-     * such as 'list' or 'array'
-     */
-    const ARRAY_STANDARD = 's_array';
-    const ARRAY_PHP      = 's_phpArray';
-    const ARRAY_LIST     = 's_list1';
-    const ARRAY_LIST2    = 's_list2';
-    const ARRAY_MATRIX   = 's_matrix';
+    const TYPE_LIST  = 'list';
+    const TYPE_ARRAY = 'array';
 
-    const TAB = '    ';
+    const FOUR_SPACE_TAB = '    ';
 
     /**
-     * Static calls interface
+     * @var string
      */
-    public static function __callstatic($name, $params)
-    {
-        // target string is expected to be:
-        $target       = $params[0][0];
-        $functionName = '__' . $name;
+    private $type;
 
-        return static::$functionName($target);
-    }
+    /**
+     * @var string
+     */
+    private $tab;
 
-    public static function __s_list1($list)
-    {
-        return static::buildList($list);
-    }
+    /**
+     * @var string
+     */
+    private $iteratorCharacter;
 
-    public static function __s_list2($list)
-    {
-        return static::buildList($list, '-', true);
-    }
+    /**
+     * @var string
+     */
+    private $keyToValueCharacter;
 
-    public static function __s_array($array)
-    {
-        return static::buildArray($array);
-    }
+    /**
+     * @var Border
+     */
+    private $border;
 
-    public static function __s_phpArray($array)
+    /**
+     * @param string $type
+     * @param string $iteratorCharacter
+     * @param string $tab
+     * @param string $keyToValueCharacter
+     * @param Border $border
+     */
+    public function __construct(
+        $type,
+        $iteratorCharacter = '#',
+        $tab = null,
+        $keyToValueCharacter = '|',
+        Border $border = null
+    )
     {
-        return static::buildPHPArray($array);
+        if (!in_array($type, $this->getAllowedTypes())) {
+            throw new Exception("Unknown structure type $type");
+        }
+
+        $this->type                = $type;
+        $this->iteratorCharacter   = $iteratorCharacter;
+        $this->tab                 = $tab;
+        $this->keyToValueCharacter = $keyToValueCharacter;
+        $this->border              = $border;
     }
 
     /**
-     * Get implemented data structures display
-     *
-     * @return array
+     * @return string
      */
-    public static function getDisplayableStructures()
+    public function getType()
     {
-        $structures = array(
-            static::ARRAY_STANDARD,
-            static::ARRAY_PHP,
-            static::ARRAY_LIST,
-            static::ARRAY_LIST2,
-            static::ARRAY_MATRIX
+        return $this->type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getKeyToValueCharacter()
+    {
+        return $this->keyToValueCharacter;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIteratorCharacter()
+    {
+        return $this->iteratorCharacter;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTab()
+    {
+        return $this->tab;
+    }
+
+    /**
+     * @return Border
+     */
+    public function getBorder()
+    {
+        return $this->border;
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getAllowedTypes()
+    {
+        $types = array(
+            static::TYPE_LIST,
+            static::TYPE_ARRAY,
         );
 
-        return $structures;
-    }
-
-    private static function buildList($list, $iteratorChracter = '#', $tab = false)
-    {
-        $result = '';
-        foreach ($list as $value) {
-            $result .= ($tab ? static::TAB : '') . $iteratorChracter . ' ' . $value . PHP_EOL;
-        }
-
-        return $result;
-    }
-
-    private static function buildArray($array, $lineCharacter = '-', $columnCharacter = '|', $crossCharacter = '+')
-    {
-        $maxKeyLength   = Util::getMaxKeyLength($array);
-        $maxValueLength = Util::getMaxValueLength($array);
-
-        $result = '';
-
-        // first line
-        $keyBorderLine   = Util::buildPatternLine($lineCharacter, $maxKeyLength + 2);
-        $valueBorderLine = Util::buildPatternLine($lineCharacter, $maxValueLength + 2);
-        $result .= $crossCharacter . $keyBorderLine . $crossCharacter;
-        $result .= $valueBorderLine . $crossCharacter . PHP_EOL;
-
-        // array lines
-        foreach ($array as $key => $value) {
-            $keyLength        = strlen($key);
-            $missingKeyLength = $maxKeyLength - $keyLength;
-            $fillingKeySpace  = Util::buildPatternLine(' ', $missingKeyLength);
-
-            $valueLength        = strlen($value);
-            $missingValueLength = $maxValueLength - $valueLength;
-            $fillingValueSpace  = Util::buildPatternLine(' ', $missingValueLength);
-
-            $result .= $columnCharacter . ' ' . $key . $fillingKeySpace . ' ';
-            $result .= $columnCharacter . ' ' . $value . $fillingValueSpace . ' ';
-            $result .= $columnCharacter . PHP_EOL;
-        }
-
-        $result .= $crossCharacter . $keyBorderLine . $crossCharacter;
-        $result .= $valueBorderLine . $crossCharacter . PHP_EOL;
-
-        return $result;
-    }
-
-    private static function buildPHPArray($array, $iteratorChracter = '', $linkCharacter = '=>', $tab = true)
-    {
-        $maxKeyLength = Util::getMaxKeyLength($array);
-
-        $result = '';
-        foreach ($array as $key => $value) {
-            $keyLength     = strlen($key);
-            $missingLength = $maxKeyLength - $keyLength;
-            $fillingSpace  = Util::buildPatternLine(' ', $missingLength);
-
-            $result .= ($tab ? static::TAB : '') . (($iteratorChracter) ? $iteratorChracter . ' ' : '');
-            $result .= $key . ' ' . $fillingSpace . $linkCharacter . ' ' . $value . PHP_EOL;
-        }
-
-        return $result;
+        return $types;
     }
 }

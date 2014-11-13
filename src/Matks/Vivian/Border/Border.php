@@ -2,121 +2,96 @@
 
 namespace Matks\Vivian\Border;
 
-use Matks\Vivian\Util;
+use Exception;
 
 /**
- * Border functions
+ * Border element
  */
 class Border
 {
-    const STYLE_UNDERLINE        = 'underlineBorder';
-    const STYLE_DOUBLE_UNDERLINE = 'doubleUnderlineBorder';
-    const STYLE_BORDER           = 'border';
-    const STYLE_DOUBLE_BORDER    = 'doubleBorder';
+    const TYPE_UNDERLINE = 'underline';
+    const TYPE_FRAME     = 'frame';
 
     /**
-     * Static calls interface
+     * @var string
      */
-    public static function __callstatic($name, $params)
-    {
-        // target string is expected to be:
-        $targetString = $params[0][0];
-        $functionName = '__' . $name;
+    private $type;
 
-        return static::$functionName($targetString);
+    /**
+     * @var string
+     */
+    private $lineCharacter;
+
+    /**
+     * @var string
+     */
+    private $columnCharacter;
+
+    /**
+     * @var string
+     */
+    private $crossCharacter;
+
+    /**
+     * @param string $type
+     * @param string $lineCharacter
+     * @param string $columnCharacter
+     * @param string $crossCharacter
+     */
+    public function __construct($type, $lineCharacter = '-', $columnCharacter = '|', $crossCharacter = '+')
+    {
+        if (!in_array($type, $this->getAllowedTypes())) {
+            throw new Exception("Unknown border type $type");
+        }
+
+        $this->type            = $type;
+        $this->lineCharacter   = $lineCharacter;
+        $this->columnCharacter = $columnCharacter;
+        $this->crossCharacter  = $crossCharacter;
     }
 
     /**
-     * Underline a string with '-'
-     *
-     * Be careful, this adds two end-of-line
-     *
-     * @param string $string
-     *
      * @return string
      */
-    public static function __underlineBorder($string)
+    public function getType()
     {
-        return static::buildUnderline($string);
+        return $this->type;
     }
 
     /**
-     * Underline a string with '='
-     *
-     * Be careful, this adds two end-of-line
-     *
-     * @param string $string
-     *
      * @return string
      */
-    public static function __doubleUnderlineBorder($string)
+    public function getColumnCharacter()
     {
-        return static::buildUnderline($string, '=');
+        return $this->columnCharacter;
     }
 
     /**
-     * Draw a border around a string
-     *
-     * @param string $string
-     *
      * @return string
      */
-    public static function __border($string)
+    public function getCrossCharacter()
     {
-        return static::buildBorder($string);
+        return $this->crossCharacter;
     }
 
     /**
-     * Draw a double border around a string
-     *
-     * @param string $string
-     *
      * @return string
      */
-    public static function __doubleBorder($string)
+    public function getLineCharacter()
     {
-        return static::buildBorder($string, '=', '#', '*');
+        return $this->lineCharacter;
     }
 
     /**
-     * Get allowed styles
-     *
-     * @return array
+     * @return string[]
      */
-    public static function getKnownBorders()
+    private function getAllowedTypes()
     {
-        $styles = array(
-            static::STYLE_UNDERLINE,
-            static::STYLE_DOUBLE_UNDERLINE,
-            static::STYLE_BORDER,
-            static::STYLE_DOUBLE_BORDER
+        $types = array(
+            static::TYPE_UNDERLINE,
+            static::TYPE_FRAME,
         );
 
-        return $styles;
-    }
-
-    private static function buildUnderline($string, $lineCharacter = '-')
-    {
-        $stringLength = strlen($string);
-        $underline    = Util::buildPatternLine($lineCharacter, $stringLength);
-
-        $result = $string . PHP_EOL . $underline . PHP_EOL;
-
-        return $result;
-    }
-
-    private static function buildBorder($string, $lineCharacter = '-', $columnCharacter = '|', $crossCharacter = '+')
-    {
-        $stringLength = strlen($string);
-
-        $line = Util::buildPatternLine($lineCharacter, $stringLength + 2);
-
-        $firstLine = $crossCharacter . $line . $crossCharacter;
-        $mainLine  = $columnCharacter . ' ' . $string . ' ' . $columnCharacter;
-        $lastLine  = $firstLine;
-
-        $result = $firstLine . PHP_EOL . $mainLine . PHP_EOL . $lastLine . PHP_EOL;
-
-        return $result;
+        return $types;
     }
 }

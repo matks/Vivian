@@ -6,11 +6,11 @@ use Packaged\Figlet\Figlet as FigletEngine;
 use Exception;
 
 /**
- * Figlet functions
+ * Figlet manager
  *
  * @link http://www.figlet.org/
  */
-class Figlet
+class FigletManager
 {
     const FIGLET_FUNCTION_NAME_REGEX = '^(figlet)_([a-zA-Z]*)$';
 
@@ -76,7 +76,7 @@ class Figlet
      *
      * The fonts provided are the one packaged in vendor packaged/figlet
      *
-     * @return array
+     * @return string[]
      */
     public static function getKnownFonts()
     {

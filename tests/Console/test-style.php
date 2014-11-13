@@ -5,7 +5,9 @@ $autoloadFile = __DIR__.'/../../vendor/autoload.php';
 
 require $autoloadFile;
 
-echo Matks\Vivian\Tools::bold('Bold');
+$bold = Matks\Vivian\Tools::bold('Bold');
+
+echo $bold;
 echo PHP_EOL;
 echo Matks\Vivian\Tools::blink('Blinking !!!');
 echo PHP_EOL;
