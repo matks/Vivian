@@ -2,7 +2,6 @@
 
 namespace Matks\Vivian\Output;
 
-use Matks\Vivian\Style\Style;
 use Exception;
 
 /**
@@ -92,6 +91,6 @@ class TextElement extends Element
         $escapeCodePattern = '#' . static::ANSI_ESCAPE_CODE_REGEX . '#';
         $result            = preg_match($escapeCodePattern, $string);
 
-        return (boolean)$result;
+        return (boolean) $result;
     }
 }

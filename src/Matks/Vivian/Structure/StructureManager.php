@@ -40,7 +40,7 @@ class StructureManager
     /**
      * Get implemented data structures display
      *
-     * @return array
+     * @return string[]
      */
     public static function getDisplayableStructures()
     {
