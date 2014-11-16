@@ -10,6 +10,8 @@ Vivian
 
 Tools to provide a pretty console output in ANSI/VT100 terminals
 
+<img src="https://cloud.githubusercontent.com/assets/3830050/5061655/3202b658-6da0-11e4-8211-dce2fef12fc6.png" width="400px"/>
+
 ## Installation
 
 Install the dependencies with composer
