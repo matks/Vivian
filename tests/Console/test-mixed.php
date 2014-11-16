@@ -4,11 +4,12 @@
 $autoloadFile = __DIR__.'/../../vendor/autoload.php';
 
 require $autoloadFile;
+use Matks\Vivian\Tools;
 
 $array = array(
     'Foo' => 'aaaaaaa',
-    Matks\Vivian\Tools::blink('Blinker') => Matks\Vivian\Tools::underline('Underlined'),
-    Matks\Vivian\Tools::blue('Blue') => $styled
+    Tools::blink('Blinker') => Tools::underline('Underlined'),
+    Tools::blue('Blue') => $styled
 );
 
-echo Matks\Vivian\Tools::s_phpArray($array);
+echo Tools::s_phpArray($array);

@@ -4,9 +4,10 @@
 $autoloadFile = __DIR__.'/../../vendor/autoload.php';
 
 require $autoloadFile;
+use Matks\Vivian\Tools;
 
-echo Matks\Vivian\Tools::doubleBorder('Big border');
-echo Matks\Vivian\Tools::border('Cool !');
-echo Matks\Vivian\Tools::underlineBorder('Great !');
-echo Matks\Vivian\Tools::doubleUnderlineBorder('Awesome !');
+echo Tools::doubleBorder('Big border');
+echo Tools::border('Cool !');
+echo Tools::underlineBorder('Great !');
+echo Tools::doubleUnderlineBorder('Awesome !');
 echo PHP_EOL;
