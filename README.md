@@ -140,3 +140,7 @@ echo $structuredElements->render();
 ## More about ANSI/VT100 terminal control
 
 http://www.termsys.demon.co.uk/vtansi.htm
+
+## License
+
+Vivian is licensed under the MIT License - see the LICENSE file for details
