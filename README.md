@@ -144,3 +144,7 @@ http://www.termsys.demon.co.uk/vtansi.htm
 ## License
 
 Vivian is licensed under the MIT License - see the LICENSE file for details
+
+## More advanced features
+
+I found a far more efficient library doing the same purpose: [CLImate](https://github.com/thephpleague/climate). I recommend it.
