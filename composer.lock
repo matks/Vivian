@@ -1,10 +1,11 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "683b48c239b65dacb9ddfcef042267be",
+    "hash": "fa8f92d7f6b21d3101783e65563f3d76",
+    "content-hash": "0ac5f28a2075b3abc9958558425d1483",
     "packages": [
         {
             "name": "packaged/figlet",
@@ -53,12 +54,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "662e543db9302b92a9341180173890dfcdb8af34"
+                "reference": "0352b7df476c4ffd226dd7dd823eecb13b28919a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/662e543db9302b92a9341180173890dfcdb8af34",
-                "reference": "662e543db9302b92a9341180173890dfcdb8af34",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/0352b7df476c4ffd226dd7dd823eecb13b28919a",
+                "reference": "0352b7df476c4ffd226dd7dd823eecb13b28919a",
                 "shasum": ""
             },
             "require": {
@@ -73,12 +74,18 @@
                 "mageekguy/atoum": "*"
             },
             "suggest": {
+                "atoum/stubs": "Provides IDE support (like autocompletion) for atoum",
                 "ext-mbstring": "Provides support for UTF-8 strings"
             },
             "bin": [
                 "bin/atoum"
             ],
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "classes/"
@@ -86,7 +93,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -119,7 +126,7 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2014-10-07 11:28:16"
+            "time": "2016-05-06 20:34:52"
         }
     ],
     "aliases": [],
@@ -129,6 +136,7 @@
         "atoum/atoum": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.3.3"
     },
